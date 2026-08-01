@@ -15,6 +15,9 @@ struct BannerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(settings: settings)
+                // El idioma elegido en la propia app se aplica inyectando su
+                // configuración regional: los textos se resuelven contra ella.
+                .environment(\.locale, settings.language.locale)
         }
     }
 }

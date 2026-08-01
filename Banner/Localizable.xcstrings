@@ -101,6 +101,23 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Destellos" } }
       }
     },
+    "settings.language.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Idioma" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Language" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Idioma" } }
+      }
+    },
+    "settings.language.system" : {
+      "comment" : "Opción de seguir el idioma del sistema",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Automàtic (sistema)" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Automatic (system)" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Automático (sistema)" } }
+      }
+    },
     "settings.show" : {
       "extractionState" : "manual",
       "localizations" : {

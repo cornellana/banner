@@ -22,6 +22,7 @@ struct ContentView: View {
                     speedSection
                     sizeSection
                     flashSection
+                    languageSection
                     showButton
                 }
                 .padding(.horizontal, 20)
@@ -39,6 +40,9 @@ struct ContentView: View {
         }
         .fullScreenCover(isPresented: $isShowingBanner) {
             BannerScreen(settings: settings)
+                // El rótulo se presenta en su propia escena: el idioma elegido
+                // se le inyecta de nuevo para no depender de la herencia.
+                .environment(\.locale, settings.language.locale)
         }
     }
 
@@ -59,7 +63,7 @@ struct ContentView: View {
             VStack(spacing: 16) {
                 Picker(selection: $settings.typeface) {
                     ForEach(BannerTypeface.allCases) { typeface in
-                        Text(typeface.displayName)
+                        typeface.label
                             .font(typeface.font(size: 20))
                             .tag(typeface)
                     }
@@ -149,6 +153,21 @@ struct ContentView: View {
                 accessibilityLabel: "settings.flash.rate",
                 tint: settings.color
             )
+        }
+    }
+
+    private var languageSection: some View {
+        SettingsCard(title: "settings.language.header") {
+            Picker(selection: $settings.language) {
+                ForEach(AppLanguage.allCases) { language in
+                    language.label.tag(language)
+                }
+            } label: {
+                Text("settings.language.header")
+            }
+            .pickerStyle(.menu)
+            .labelsHidden()
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 

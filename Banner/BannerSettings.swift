@@ -13,6 +13,9 @@ final class BannerSettings {
     /// Tipografía con la que se dibuja el texto.
     var typeface: BannerTypeface { didSet { save(typeface.rawValue, for: .typeface) } }
 
+    /// Idioma de la interfaz, independiente del idioma del sistema.
+    var language: AppLanguage { didSet { save(language.rawValue, for: .language) } }
+
     /// Tono del color en el espacio HSB, en el rango 0...1.
     var hue: Double { didSet { save(hue, for: .hue) } }
 
@@ -62,6 +65,8 @@ final class BannerSettings {
             ?? String(localized: "banner.defaultText", comment: "Texto de ejemplo que aparece la primera vez")
         typeface = defaults.string(forKey: Key.typeface.rawValue)
             .flatMap(BannerTypeface.init(rawValue:)) ?? .rounded
+        language = defaults.string(forKey: Key.language.rawValue)
+            .flatMap(AppLanguage.init(rawValue:)) ?? .system
         hue = defaults.value(forKey: Key.hue.rawValue) as? Double ?? 0.12
         saturation = defaults.value(forKey: Key.saturation.rawValue) as? Double ?? 1.0
         brightness = defaults.value(forKey: Key.brightness.rawValue) as? Double ?? 1.0
@@ -73,7 +78,7 @@ final class BannerSettings {
     // MARK: - Persistencia
 
     private enum Key: String {
-        case text, typeface, hue, saturation, brightness, speed, heightFraction, flashRate
+        case text, typeface, language, hue, saturation, brightness, speed, heightFraction, flashRate
     }
 
     private func save(_ value: Any, for key: Key) {

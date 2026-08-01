@@ -24,23 +24,27 @@ enum BannerTypeface: String, CaseIterable, Identifiable, Sendable {
 
     var id: String { rawValue }
 
-    /// Nombre mostrado en el selector. Los nombres de familia son marcas y no se traducen.
-    var displayName: String {
+    /// Etiqueta mostrada en el selector.
+    ///
+    /// Se devuelve como `Text` para que las cuatro primeras se traduzcan con el
+    /// idioma activo en el entorno; los nombres de familia son marcas y no se
+    /// traducen.
+    var label: Text {
         switch self {
-        case .rounded: String(localized: "typeface.rounded", comment: "Nombre del tipo San Francisco Rounded")
-        case .standard: String(localized: "typeface.standard", comment: "Nombre del tipo del sistema")
-        case .serif: String(localized: "typeface.serif", comment: "Nombre del tipo con remates (New York)")
-        case .monospaced: String(localized: "typeface.monospaced", comment: "Nombre del tipo monoespaciado")
-        case .avenirNext: "Avenir Next"
-        case .futura: "Futura"
-        case .georgia: "Georgia"
-        case .helvetica: "Helvetica Neue"
-        case .americanTypewriter: "American Typewriter"
-        case .copperplate: "Copperplate"
-        case .chalkboard: "Chalkboard"
-        case .markerFelt: "Marker Felt"
-        case .snellRoundhand: "Snell Roundhand"
-        case .partyLET: "Party"
+        case .rounded: Text("typeface.rounded")
+        case .standard: Text("typeface.standard")
+        case .serif: Text("typeface.serif")
+        case .monospaced: Text("typeface.monospaced")
+        case .avenirNext: Text(verbatim: "Avenir Next")
+        case .futura: Text(verbatim: "Futura")
+        case .georgia: Text(verbatim: "Georgia")
+        case .helvetica: Text(verbatim: "Helvetica Neue")
+        case .americanTypewriter: Text(verbatim: "American Typewriter")
+        case .copperplate: Text(verbatim: "Copperplate")
+        case .chalkboard: Text(verbatim: "Chalkboard")
+        case .markerFelt: Text(verbatim: "Marker Felt")
+        case .snellRoundhand: Text(verbatim: "Snell Roundhand")
+        case .partyLET: Text(verbatim: "Party")
         }
     }
 

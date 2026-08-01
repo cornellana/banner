@@ -42,4 +42,8 @@ swift scripts/render_icon.swift Banner/Assets.xcassets/AppIcon.appiconset/AppIco
 
 ## Idiomas
 
-Inglés, español y catalán (`Localizable.xcstrings`).
+Inglés, español y catalán (`Localizable.xcstrings`). El idioma se elige **dentro
+de la app**, en la sección *Idioma* de los ajustes, sin pasar por los ajustes del
+sistema y sin reiniciar: la selección se aplica inyectando su `Locale` en el
+entorno de SwiftUI, contra el que se resuelven los textos en cada dibujado. La
+opción *Automático* sigue al idioma del sistema.

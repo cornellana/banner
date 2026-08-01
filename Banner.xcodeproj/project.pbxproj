@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03309D0568A53077B48BAB78 /* BannerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA4B7761A885DC51416987 /* BannerSettings.swift */; };
+		2FC229C1D6B55F92B90106EF /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A37860031F905218F9A1C0 /* AppLanguage.swift */; };
 		31077BF6E0D1A02ACBD869F8 /* VolumeButtonWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D999E37244CB8525546A /* VolumeButtonWatcher.swift */; };
 		34B605CC23CD8472594DCD8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD1F25E20104F4C7D105DA /* Assets.xcassets */; };
 		3C2AECD69E903A4C236A15CB /* BannerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3C45D7D7A10458FEA5767 /* BannerScreen.swift */; };
@@ -27,6 +28,7 @@
 		98D8F9ADBC6C0AE908D728C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9E47CCCACB438704EA74B1BC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9F722021D5FEE474F44A033C /* Banner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Banner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8A37860031F905218F9A1C0 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		E5A3C45D7D7A10458FEA5767 /* BannerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerScreen.swift; sourceTree = "<group>"; };
 		EFB739BE48F9625F57109AC4 /* BannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,6 +37,7 @@
 		2DFED78FFF46E78D7ECACC14 /* Banner */ = {
 			isa = PBXGroup;
 			children = (
+				C8A37860031F905218F9A1C0 /* AppLanguage.swift */,
 				0AAD1F25E20104F4C7D105DA /* Assets.xcassets */,
 				EFB739BE48F9625F57109AC4 /* BannerApp.swift */,
 				E5A3C45D7D7A10458FEA5767 /* BannerScreen.swift */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FC229C1D6B55F92B90106EF /* AppLanguage.swift in Sources */,
 				82B6F779D8F744BEE6CE347E /* BannerApp.swift in Sources */,
 				3C2AECD69E903A4C236A15CB /* BannerScreen.swift in Sources */,
 				03309D0568A53077B48BAB78 /* BannerSettings.swift in Sources */,
