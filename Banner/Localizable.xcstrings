@@ -1,0 +1,214 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "banner.defaultText" : {
+      "comment" : "Texto de ejemplo que aparece la primera vez",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Hola! 👋" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hello! 👋" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Hola! 👋" } }
+      }
+    },
+    "banner.hint" : {
+      "comment" : "Aviso inicial sobre cómo volver a los ajustes",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Toca la pantalla per tornar als ajustos · Volum: flaixos" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap the screen to go back to the settings · Volume: flashes" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Toca la pantalla para volver a los ajustes · Volumen: destellos" } }
+      }
+    },
+    "banner.settings" : {
+      "comment" : "Botón para volver a la pantalla de ajustes",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ajustos" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ajustes" } }
+      }
+    },
+    "common.done" : {
+      "comment" : "Botón para cerrar el teclado",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Fet" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Hecho" } }
+      }
+    },
+    "settings.color.brightness" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Brillantor" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Brightness" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Brillo" } }
+      }
+    },
+    "settings.color.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Color" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Color" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Color" } }
+      }
+    },
+    "settings.color.hue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "To" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hue" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tono" } }
+      }
+    },
+    "settings.color.saturation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Saturació" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Saturation" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Saturación" } }
+      }
+    },
+    "settings.flash.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Prem un botó de volum amb el rètol a la pantalla per encendre o apagar els flaixos." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Press a volume button while the banner is on screen to switch the flashes on or off." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pulsa un botón de volumen con el rótulo en pantalla para encender o apagar los destellos." } }
+      }
+    },
+    "settings.flash.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Flaixos" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Flashes" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Destellos" } }
+      }
+    },
+    "settings.flash.rate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Freqüència" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rate" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Frecuencia" } }
+      }
+    },
+    "settings.flash.toggle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Flaixos" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Flashes" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Destellos" } }
+      }
+    },
+    "settings.show" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Mostra el rètol" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Show banner" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mostrar rótulo" } }
+      }
+    },
+    "settings.size.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "El text recorre tota l'amplada de la pantalla; aquí n'ajustes l'alçada." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The text sweeps across the full width of the screen; this sets how tall it is." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "El texto recorre toda la anchura de la pantalla; aquí ajustas su altura." } }
+      }
+    },
+    "settings.size.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Mida" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Size" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tamaño" } }
+      }
+    },
+    "settings.speed.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Velocitat" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speed" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Velocidad" } }
+      }
+    },
+    "settings.text.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Pots incloure emoticones 🎉" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Emoji are welcome 🎉" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Puedes incluir emoticonos 🎉" } }
+      }
+    },
+    "settings.text.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Missatge" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Message" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mensaje" } }
+      }
+    },
+    "settings.text.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Escriu el teu missatge" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Write your message" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Escribe tu mensaje" } }
+      }
+    },
+    "settings.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Banner" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Banner" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Banner" } }
+      }
+    },
+    "settings.typeface.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Tipografia" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Typeface" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tipografía" } }
+      }
+    },
+    "typeface.monospaced" : {
+      "comment" : "Nombre del tipo monoespaciado",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Monoespaiada" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Monospaced" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Monoespaciada" } }
+      }
+    },
+    "typeface.rounded" : {
+      "comment" : "Nombre del tipo San Francisco Rounded",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Arrodonida" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rounded" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Redondeada" } }
+      }
+    },
+    "typeface.serif" : {
+      "comment" : "Nombre del tipo con remates (New York)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Amb serifa" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Serif" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Con remates" } }
+      }
+    },
+    "typeface.standard" : {
+      "comment" : "Nombre del tipo del sistema",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Sistema" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "System" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sistema" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
