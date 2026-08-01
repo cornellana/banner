@@ -1,6 +1,11 @@
 import SwiftUI
 
-/// Pantalla de configuración: texto, color, velocidad, tamaño y destellos.
+/// Pantalla de configuración: texto, tipografía, color, velocidad, tamaño y
+/// destellos.
+///
+/// El contenido se compone con un `ScrollView` y tarjetas propias en lugar de un
+/// `Form`: la lista del sistema duplica en iOS 26 la fila recortada por el borde
+/// inferior sobre el título de la barra de navegación.
 struct ContentView: View {
     @Bindable var settings: BannerSettings
 
@@ -9,15 +14,20 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                textSection
-                typefaceSection
-                colorSection
-                speedSection
-                sizeSection
-                flashSection
-                showSection
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    textSection
+                    typefaceSection
+                    colorSection
+                    speedSection
+                    sizeSection
+                    flashSection
+                    showButton
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 32)
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("settings.title")
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -35,176 +45,193 @@ struct ContentView: View {
     // MARK: - Secciones
 
     private var textSection: some View {
-        Section {
+        SettingsCard(title: "settings.text.header", footer: "settings.text.footer") {
             TextField("settings.text.placeholder", text: $settings.text, axis: .vertical)
                 .lineLimit(1...3)
                 .focused($isTextFieldFocused)
                 .font(.title3)
-        } header: {
-            Text("settings.text.header")
-        } footer: {
-            Text("settings.text.footer")
+                .textFieldStyle(.plain)
         }
     }
 
     private var typefaceSection: some View {
-        Section {
-            Picker(selection: $settings.typeface) {
-                ForEach(BannerTypeface.allCases) { typeface in
-                    Text(typeface.displayName)
-                        .font(typeface.font(size: 20))
-                        .tag(typeface)
+        SettingsCard(title: "settings.typeface.header") {
+            VStack(spacing: 16) {
+                Picker(selection: $settings.typeface) {
+                    ForEach(BannerTypeface.allCases) { typeface in
+                        Text(typeface.displayName)
+                            .font(typeface.font(size: 20))
+                            .tag(typeface)
+                    }
+                } label: {
+                    Text("settings.typeface.header")
                 }
-            } label: {
-                Text("settings.typeface.header")
-            }
-            .pickerStyle(.navigationLink)
+                .pickerStyle(.menu)
+                .labelsHidden()
+                .frame(maxWidth: .infinity, alignment: .leading)
 
-            // Muestra el aspecto real del rótulo con el tipo y el color elegidos.
-            Text(settings.text.isEmpty ? " " : settings.text)
-                .font(settings.typeface.font(size: 34))
-                .foregroundStyle(settings.color)
-                .lineLimit(1)
-                .minimumScaleFactor(0.4)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.vertical, 8)
-                .listRowBackground(Color.black)
-        } header: {
-            Text("settings.typeface.header")
+                // Muestra el aspecto real del rótulo con el tipo y el color elegidos.
+                Text(settings.text.isEmpty ? " " : settings.text)
+                    .font(settings.typeface.font(size: 34))
+                    .foregroundStyle(settings.color)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(Color.black, in: RoundedRectangle(cornerRadius: 12))
+            }
         }
     }
 
     private var colorSection: some View {
-        Section("settings.color.header") {
-            LabeledSlider(
-                title: "settings.color.hue",
-                value: $settings.hue,
-                range: 0...1,
-                track: LinearGradient(
+        SettingsCard(title: "settings.color.header") {
+            VStack(spacing: 18) {
+                GradientSlider(
+                    title: "settings.color.hue",
+                    value: $settings.hue,
                     colors: stride(from: 0.0, through: 1.0, by: 1.0 / 12.0).map {
                         Color(hue: $0, saturation: settings.saturation, brightness: settings.brightness)
-                    },
-                    startPoint: .leading,
-                    endPoint: .trailing
+                    }
                 )
-            )
-            LabeledSlider(
-                title: "settings.color.saturation",
-                value: $settings.saturation,
-                range: 0...1,
-                track: LinearGradient(
+                GradientSlider(
+                    title: "settings.color.saturation",
+                    value: $settings.saturation,
                     colors: [
                         Color(hue: settings.hue, saturation: 0, brightness: settings.brightness),
                         Color(hue: settings.hue, saturation: 1, brightness: settings.brightness)
-                    ],
-                    startPoint: .leading,
-                    endPoint: .trailing
+                    ]
                 )
-            )
-            LabeledSlider(
-                title: "settings.color.brightness",
-                value: $settings.brightness,
-                range: 0...1,
-                track: LinearGradient(
+                GradientSlider(
+                    title: "settings.color.brightness",
+                    value: $settings.brightness,
                     colors: [
                         Color(hue: settings.hue, saturation: settings.saturation, brightness: 0),
                         Color(hue: settings.hue, saturation: settings.saturation, brightness: 1)
-                    ],
-                    startPoint: .leading,
-                    endPoint: .trailing
+                    ]
                 )
-            )
+            }
         }
     }
 
     private var speedSection: some View {
-        Section {
-            Slider(
+        SettingsCard(title: "settings.speed.header") {
+            IconSlider(
                 value: $settings.speed,
-                in: BannerSettings.speedRange
-            ) {
-                Text("settings.speed.header")
-            } minimumValueLabel: {
-                Image(systemName: "tortoise.fill")
-            } maximumValueLabel: {
-                Image(systemName: "hare.fill")
-            }
-            .tint(settings.color)
-        } header: {
-            Text("settings.speed.header")
+                range: BannerSettings.speedRange,
+                minimumIcon: "tortoise.fill",
+                maximumIcon: "hare.fill",
+                accessibilityLabel: "settings.speed.header",
+                tint: settings.color
+            )
         }
     }
 
     private var sizeSection: some View {
-        Section {
-            Slider(
+        SettingsCard(title: "settings.size.header", footer: "settings.size.footer") {
+            IconSlider(
                 value: $settings.heightFraction,
-                in: BannerSettings.heightRange
-            ) {
-                Text("settings.size.header")
-            } minimumValueLabel: {
-                Image(systemName: "textformat.size.smaller")
-            } maximumValueLabel: {
-                Image(systemName: "textformat.size.larger")
-            }
-            .tint(settings.color)
-        } header: {
-            Text("settings.size.header")
-        } footer: {
-            Text("settings.size.footer")
+                range: BannerSettings.heightRange,
+                minimumIcon: "textformat.size.smaller",
+                maximumIcon: "textformat.size.larger",
+                accessibilityLabel: "settings.size.header",
+                tint: settings.color
+            )
         }
     }
 
     private var flashSection: some View {
-        Section {
-            Slider(
+        SettingsCard(title: "settings.flash.header", footer: "settings.flash.footer") {
+            IconSlider(
                 value: $settings.flashRate,
-                in: BannerSettings.flashRateRange
-            ) {
-                Text("settings.flash.rate")
-            } minimumValueLabel: {
-                Image(systemName: "light.min")
-            } maximumValueLabel: {
-                Image(systemName: "light.max")
-            }
-            .tint(settings.color)
-        } header: {
-            Text("settings.flash.header")
-        } footer: {
-            Text("settings.flash.footer")
+                range: BannerSettings.flashRateRange,
+                minimumIcon: "light.min",
+                maximumIcon: "light.max",
+                accessibilityLabel: "settings.flash.rate",
+                tint: settings.color
+            )
         }
     }
 
-    private var showSection: some View {
-        Section {
-            Button {
-                isTextFieldFocused = false
-                isShowingBanner = true
-            } label: {
-                Label("settings.show", systemImage: "play.rectangle.fill")
-                    // Sin esto el símbolo se dibuja en multicolor y el triángulo
-                    // sale azul sobre el fondo del botón.
-                    .symbolRenderingMode(.monochrome)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 6)
+    private var showButton: some View {
+        Button {
+            isTextFieldFocused = false
+            isShowingBanner = true
+        } label: {
+            Label("settings.show", systemImage: "play.rectangle.fill")
+                // Sin esto el símbolo conserva su variante multicolor y el
+                // triángulo sale azul sobre el fondo del botón.
+                .symbolRenderingMode(.monochrome)
+                .foregroundStyle(.white)
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(settings.color)
+    }
+}
+
+// MARK: - Tarjeta de ajustes
+
+/// Bloque con título, contenido sobre fondo agrupado y pie opcional.
+private struct SettingsCard<Content: View>: View {
+    let title: LocalizedStringKey
+    var footer: LocalizedStringKey?
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .textCase(.uppercase)
+
+            content
+                .padding(16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    Color(.secondarySystemGroupedBackground),
+                    in: RoundedRectangle(cornerRadius: 16)
+                )
+
+            if let footer {
+                Text(footer)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
             }
-            .buttonStyle(.borderedProminent)
-            .tint(settings.color)
-            .listRowInsets(EdgeInsets())
-            .listRowBackground(Color.clear)
         }
     }
 }
 
-// MARK: - Deslizador con muestra de color
+// MARK: - Deslizadores
 
-/// Deslizador acompañado de una barra que previsualiza el rango de valores.
-private struct LabeledSlider<Track: ShapeStyle>: View {
-    let title: LocalizedStringKey
+/// Deslizador flanqueado por dos símbolos que indican los extremos del rango.
+private struct IconSlider: View {
     @Binding var value: Double
     let range: ClosedRange<Double>
-    let track: Track
+    let minimumIcon: String
+    let maximumIcon: String
+    let accessibilityLabel: LocalizedStringKey
+    let tint: Color
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: minimumIcon)
+                .foregroundStyle(.secondary)
+            Slider(value: $value, in: range)
+                .tint(tint)
+                .accessibilityLabel(accessibilityLabel)
+            Image(systemName: maximumIcon)
+                .foregroundStyle(.secondary)
+        }
+    }
+}
+
+/// Deslizador con una barra de degradado que previsualiza el rango de colores.
+private struct GradientSlider: View {
+    let title: LocalizedStringKey
+    @Binding var value: Double
+    let colors: [Color]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -213,14 +240,14 @@ private struct LabeledSlider<Track: ShapeStyle>: View {
                 .foregroundStyle(.secondary)
 
             Capsule()
-                .fill(track)
+                .fill(LinearGradient(colors: colors, startPoint: .leading, endPoint: .trailing))
                 .frame(height: 10)
                 .overlay(Capsule().strokeBorder(.quaternary))
 
-            Slider(value: $value, in: range)
+            Slider(value: $value, in: 0...1)
                 .tint(.primary.opacity(0.6))
+                .accessibilityLabel(title)
         }
-        .padding(.vertical, 4)
     }
 }
 
