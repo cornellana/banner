@@ -15,7 +15,9 @@ anchura.
 - **Tamaño**: proporción de la altura de la pantalla que ocupa el texto.
 - **Destellos**: el fondo parpadea en el color elegido para llamar la atención.
   Se encienden y apagan con **los botones de volumen** mientras el rótulo está en
-  pantalla (`AVCaptureEventInteraction`, iOS 17.2+), sin tocar nada.
+  pantalla, sin tocar nada: se observa el volumen de salida de la sesión de audio
+  (iOS no entrega los botones como eventos salvo a apps de captura) y se recentra
+  al llegar a los extremos para que el gesto se pueda repetir.
 - **Salir en cualquier momento**: un toque muestra la barra con el botón
   *Ajustes*; dos toques o un deslizamiento vertical vuelven directamente a la
   pantalla de configuración.

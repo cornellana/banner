@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		03309D0568A53077B48BAB78 /* BannerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA4B7761A885DC51416987 /* BannerSettings.swift */; };
+		31077BF6E0D1A02ACBD869F8 /* VolumeButtonWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D999E37244CB8525546A /* VolumeButtonWatcher.swift */; };
 		34B605CC23CD8472594DCD8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD1F25E20104F4C7D105DA /* Assets.xcassets */; };
 		3C2AECD69E903A4C236A15CB /* BannerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3C45D7D7A10458FEA5767 /* BannerScreen.swift */; };
 		47484327344DBF749DB4D06D /* OrientationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB19B42625E5AA8EEBBABC4 /* OrientationController.swift */; };
 		659DD02A563241E2EEDFA149 /* BannerTypeface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57DE90B827A053E7BD011D /* BannerTypeface.swift */; };
-		6AAB19037FB59B8F83760D32 /* HardwareButtonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120EDDEE1FB1E7D281E5F560 /* HardwareButtonReader.swift */; };
 		82B6F779D8F744BEE6CE347E /* BannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB739BE48F9625F57109AC4 /* BannerApp.swift */; };
 		BA7D095A4E4C212CDE6F9BEF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9E47CCCACB438704EA74B1BC /* Localizable.xcstrings */; };
 		F1C20BEBBA5288ED96E0C5B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D8F9ADBC6C0AE908D728C2 /* ContentView.swift */; };
@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		0AAD1F25E20104F4C7D105DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F57DE90B827A053E7BD011D /* BannerTypeface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTypeface.swift; sourceTree = "<group>"; };
-		120EDDEE1FB1E7D281E5F560 /* HardwareButtonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareButtonReader.swift; sourceTree = "<group>"; };
+		5EC0D999E37244CB8525546A /* VolumeButtonWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeButtonWatcher.swift; sourceTree = "<group>"; };
 		63EA4B7761A885DC51416987 /* BannerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerSettings.swift; sourceTree = "<group>"; };
 		7FB19B42625E5AA8EEBBABC4 /* OrientationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationController.swift; sourceTree = "<group>"; };
 		98D8F9ADBC6C0AE908D728C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,9 +41,9 @@
 				63EA4B7761A885DC51416987 /* BannerSettings.swift */,
 				0F57DE90B827A053E7BD011D /* BannerTypeface.swift */,
 				98D8F9ADBC6C0AE908D728C2 /* ContentView.swift */,
-				120EDDEE1FB1E7D281E5F560 /* HardwareButtonReader.swift */,
 				9E47CCCACB438704EA74B1BC /* Localizable.xcstrings */,
 				7FB19B42625E5AA8EEBBABC4 /* OrientationController.swift */,
+				5EC0D999E37244CB8525546A /* VolumeButtonWatcher.swift */,
 			);
 			path = Banner;
 			sourceTree = "<group>";
@@ -142,8 +142,8 @@
 				03309D0568A53077B48BAB78 /* BannerSettings.swift in Sources */,
 				659DD02A563241E2EEDFA149 /* BannerTypeface.swift in Sources */,
 				F1C20BEBBA5288ED96E0C5B2 /* ContentView.swift in Sources */,
-				6AAB19037FB59B8F83760D32 /* HardwareButtonReader.swift in Sources */,
 				47484327344DBF749DB4D06D /* OrientationController.swift in Sources */,
+				31077BF6E0D1A02ACBD869F8 /* VolumeButtonWatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

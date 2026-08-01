@@ -12,6 +12,7 @@ struct BannerScreen: View {
     @State private var areControlsVisible = false
     @State private var controlsHideTask: Task<Void, Never>?
     @State private var isHintVisible = true
+    @State private var volumeButtons = VolumeButtonWatcher()
 
     var body: some View {
         GeometryReader { proxy in
@@ -47,12 +48,6 @@ struct BannerScreen: View {
         }
         .ignoresSafeArea()
         .background(Color.black)
-        // Los botones de volumen encienden y apagan los destellos sin tener que
-        // tocar la pantalla; la vista no intercepta toques.
-        .background {
-            HardwareButtonReader { toggleFlashes() }
-                .allowsHitTesting(false)
-        }
         .overlay(alignment: .top) { controls }
         .overlay(alignment: .bottom) { hint }
         .contentShape(Rectangle())
@@ -71,10 +66,15 @@ struct BannerScreen: View {
         .onAppear {
             OrientationController.lock(to: .landscape)
             UIApplication.shared.isIdleTimerDisabled = true
+            // Los botones de volumen encienden y apagan los destellos sin
+            // tener que tocar la pantalla.
+            volumeButtons.onPress = { toggleFlashes() }
+            volumeButtons.start()
         }
         .onDisappear {
             OrientationController.lock(to: .portrait)
             UIApplication.shared.isIdleTimerDisabled = false
+            volumeButtons.stop()
             controlsHideTask?.cancel()
         }
     }
