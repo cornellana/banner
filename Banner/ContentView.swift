@@ -133,7 +133,8 @@ struct ContentView: View {
                         typeface: settings.typeface,
                         fontSize: 34,
                         baseColor: UIColor(settings.color)
-                    )
+                    ),
+                    scalesToFit: true
                 )
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)

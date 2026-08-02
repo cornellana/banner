@@ -42,6 +42,16 @@ struct RichTextEditor: UIViewRepresentable {
         return view
     }
 
+    /// Ajusta el editor al ancho disponible y crece solo en alto.
+    ///
+    /// Sin esto, un `UITextView` sin desplazamiento reclama como anchura la de
+    /// todo el texto en una línea y desborda la pantalla de ajustes entera.
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UITextView, context: Context) -> CGSize? {
+        guard let width = proposal.width, width.isFinite else { return nil }
+        let fitting = uiView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
+        return CGSize(width: width, height: fitting.height)
+    }
+
     func updateUIView(_ uiView: UITextView, context: Context) {
         controller.textView = uiView
         // Solo se reescribe cuando el cambio viene de fuera (cargar un mensaje

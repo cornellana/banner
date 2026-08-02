@@ -83,7 +83,8 @@ private struct PresetCard: View {
                     typeface: preset.typeface,
                     fontSize: 28,
                     baseColor: UIColor(preset.color)
-                )
+                ),
+                scalesToFit: true
             )
             .padding(.horizontal, 16)
             .frame(maxWidth: .infinity, alignment: .leading)
