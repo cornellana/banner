@@ -20,6 +20,11 @@ anchura.
   pantalla, sin tocar nada: se observa el volumen de salida de la sesión de audio
   (iOS no entrega los botones como eventos salvo a apps de captura) y se recentra
   al llegar a los extremos para que el gesto se pueda repetir.
+- **Pantalla externa**: al conectar un televisor por AirPlay, un monitor por
+  cable o un iPad como pantalla, el rótulo se muestra allí a pantalla completa
+  mediante una escena de rol *external display* — igual que hacen las apps de
+  vídeo, no es un simple duplicado. El iPhone sigue mostrando los ajustes y todo
+  lo que se toca se refleja al instante en la pantalla grande.
 - **Mensajes guardados**: el icono de guardar conserva el mensaje con todas sus
   características, y el de la pila abre una biblioteca con la vista previa real
   de cada uno; al tocar una se cargan sus ajustes. Se borran con una pulsación

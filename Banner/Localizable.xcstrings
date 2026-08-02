@@ -46,6 +46,15 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Cerrar" } }
       }
     },
+    "projection.active" : {
+      "comment" : "Aviso de que el rótulo se ve en una pantalla externa",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "S'està projectant en una pantalla externa" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Showing on an external display" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Proyectando en una pantalla externa" } }
+      }
+    },
     "presets.delete" : {
       "extractionState" : "manual",
       "localizations" : {

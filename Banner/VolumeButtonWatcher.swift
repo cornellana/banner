@@ -83,7 +83,9 @@ final class VolumeButtonWatcher {
         guard volumeView.superview == nil else { return }
         let window = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
-            .first(where: { $0.activationState == .foregroundActive })?
+            .first(where: {
+                $0.session.role == .windowApplication && $0.activationState == .foregroundActive
+            })?
             .keyWindow
         volumeView.alpha = 0.01
         volumeView.isUserInteractionEnabled = false

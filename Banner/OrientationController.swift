@@ -17,9 +17,13 @@ enum OrientationController {
     static func lock(to orientations: UIInterfaceOrientationMask) {
         supportedOrientations = orientations
 
+        // Se descartan las escenas de pantalla externa: la orientación solo
+        // tiene sentido en la del dispositivo.
         guard let scene = UIApplication.shared.connectedScenes
             .compactMap({ $0 as? UIWindowScene })
-            .first(where: { $0.activationState == .foregroundActive })
+            .first(where: {
+                $0.session.role == .windowApplication && $0.activationState == .foregroundActive
+            })
         else { return }
 
         // El error se ignora deliberadamente: en iPad con multitarea el sistema

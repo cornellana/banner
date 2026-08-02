@@ -12,6 +12,9 @@ struct ContentView: View {
     /// Mensajes guardados por el usuario.
     let store: PresetStore
 
+    /// Estado de la proyección en una pantalla externa.
+    let projection: ProjectionState
+
     @State private var isShowingBanner = false
     @State private var isShowingLibrary = false
 
@@ -24,6 +27,7 @@ struct ContentView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
+                    projectionBanner
                     textSection
                     typefaceSection
                     colorSection
@@ -80,6 +84,21 @@ struct ContentView: View {
     }
 
     // MARK: - Secciones
+
+    /// Aviso de que el rótulo se está viendo en una pantalla externa; los
+    /// cambios que se hagan aquí se reflejan allí al momento.
+    @ViewBuilder
+    private var projectionBanner: some View {
+        if projection.isProjecting {
+            Label("projection.active", systemImage: "tv.fill")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(settings.color.opacity(0.9), in: RoundedRectangle(cornerRadius: 16))
+        }
+    }
 
     private var textSection: some View {
         SettingsCard(title: "settings.text.header", footer: "settings.text.footer") {
@@ -346,5 +365,5 @@ private struct GradientSlider: View {
 }
 
 #Preview {
-    ContentView(settings: BannerSettings(), store: PresetStore())
+    ContentView(settings: BannerSettings(), store: PresetStore(), projection: ProjectionState())
 }
