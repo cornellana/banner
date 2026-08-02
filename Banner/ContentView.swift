@@ -21,7 +21,8 @@ struct ContentView: View {
     /// Contador que dispara la respuesta háptica al guardar.
     @State private var saveCount = 0
 
-    @FocusState private var isTextFieldFocused: Bool
+    /// Mando del editor de texto con atributos.
+    @State private var richText = RichTextController()
 
     var body: some View {
         NavigationStack {
@@ -46,7 +47,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        isTextFieldFocused = false
+                        richText.endEditing()
                         store.save(from: settings)
                         saveCount += 1
                     } label: {
@@ -55,19 +56,20 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        isTextFieldFocused = false
+                        richText.endEditing()
                         isShowingLibrary = true
                     } label: {
                         Label("presets.title", systemImage: "rectangle.stack")
                     }
                 }
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("common.done") { isTextFieldFocused = false }
-                }
             }
             .sensoryFeedback(.success, trigger: saveCount)
             .scrollDismissesKeyboard(.interactively)
+            .onAppear {
+                // El editor vive en UIKit: los cambios de formato vuelven al
+                // modelo por esta vía, no por el enlace del texto.
+                richText.onChange = { settings.attributedText = $0 }
+            }
         }
         .fullScreenCover(isPresented: $isShowingBanner) {
             BannerScreen(settings: settings)
@@ -102,11 +104,8 @@ struct ContentView: View {
 
     private var textSection: some View {
         SettingsCard(title: "settings.text.header", footer: "settings.text.footer") {
-            TextField("settings.text.placeholder", text: $settings.text, axis: .vertical)
-                .lineLimit(1...3)
-                .focused($isTextFieldFocused)
-                .font(.title3)
-                .textFieldStyle(.plain)
+            RichTextEditor(text: $settings.attributedText, controller: richText)
+                .frame(minHeight: 30)
         }
     }
 
@@ -126,15 +125,20 @@ struct ContentView: View {
                 .labelsHidden()
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                // Muestra el aspecto real del rótulo con el tipo y el color elegidos.
-                Text(settings.text.isEmpty ? " " : settings.text)
-                    .font(settings.typeface.font(size: 34))
-                    .foregroundStyle(settings.color)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.4)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(settings.backgroundColor, in: RoundedRectangle(cornerRadius: 12))
+                // Muestra el aspecto real del rótulo: tipografía, colores y los
+                // atributos que lleve cada tramo del mensaje.
+                AttributedLabel(
+                    attributedText: BannerText.styled(
+                        settings.plainText.isEmpty ? BannerText.plain(" ") : settings.attributedText,
+                        typeface: settings.typeface,
+                        fontSize: 34,
+                        baseColor: UIColor(settings.color)
+                    )
+                )
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(settings.backgroundColor, in: RoundedRectangle(cornerRadius: 12))
+                .clipped()
             }
         }
     }
@@ -267,7 +271,7 @@ struct ContentView: View {
 
     private var showButton: some View {
         Button {
-            isTextFieldFocused = false
+            richText.endEditing()
             isShowingBanner = true
         } label: {
             Label("settings.show", systemImage: "play.rectangle.fill")

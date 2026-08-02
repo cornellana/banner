@@ -9,7 +9,13 @@ struct BannerPreset: Identifiable, Codable, Hashable {
     let id: UUID
     let savedAt: Date
 
-    var text: String
+    /// Mensaje con sus atributos, archivado.
+    var textData: Data?
+
+    /// Mensaje en texto plano; es lo único que guardaban las versiones
+    /// anteriores y se conserva para poder leerlas.
+    var text: String?
+
     var typeface: BannerTypeface
     var hue: Double
     var saturation: Double
@@ -20,6 +26,14 @@ struct BannerPreset: Identifiable, Codable, Hashable {
     var speed: Double
     var heightFraction: Double
     var flashRate: Double
+
+    /// Mensaje con atributos, ya sea del formato actual o de uno anterior.
+    var attributedText: NSAttributedString {
+        if let textData, let restored = BannerText.unarchive(textData) {
+            return restored
+        }
+        return BannerText.plain(text ?? "")
+    }
 
     /// Color del texto guardado.
     var color: Color {
@@ -38,7 +52,8 @@ struct BannerPreset: Identifiable, Codable, Hashable {
     init(settings: BannerSettings, date: Date = .now) {
         id = UUID()
         savedAt = date
-        text = settings.text
+        textData = BannerText.archive(settings.attributedText)
+        text = settings.plainText
         typeface = settings.typeface
         hue = settings.hue
         saturation = settings.saturation

@@ -69,12 +69,24 @@ enum BannerTypeface: String, CaseIterable, Identifiable, Codable, Sendable {
         }
     }
 
-    /// Equivalente en UIKit, usado para medir la anchura del texto.
-    /// - Parameter size: Cuerpo en puntos.
-    func uiFont(size: CGFloat) -> UIFont {
-        let system = UIFont.systemFont(ofSize: size, weight: .heavy)
+    /// Equivalente en UIKit, usado para dibujar y medir el rótulo.
+    /// - Parameters:
+    ///   - size: Cuerpo en puntos.
+    ///   - bold: Si el tramo lleva negrita. El rótulo ya se dibuja en un peso
+    ///     grueso, así que la negrita sube al más grueso disponible; si no, no
+    ///     se notaría ninguna diferencia.
+    func uiFont(size: CGFloat, bold: Bool = false) -> UIFont {
+        let system = UIFont.systemFont(ofSize: size, weight: bold ? .black : .heavy)
         guard let systemDesign else {
-            return UIFont(name: rawValue, size: size) ?? system
+            let named = UIFont(name: rawValue, size: size) ?? system
+            // En las familias con nombre la negrita se pide como rasgo: no
+            // todas tienen un corte más grueso, y entonces se queda igual.
+            guard bold,
+                  let descriptor = named.fontDescriptor.withSymbolicTraits(
+                      named.fontDescriptor.symbolicTraits.union(.traitBold)
+                  )
+            else { return named }
+            return UIFont(descriptor: descriptor, size: size)
         }
         let design: UIFontDescriptor.SystemDesign = switch systemDesign {
         case .rounded: .rounded

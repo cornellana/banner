@@ -7,7 +7,10 @@ anchura.
 
 ## Qué hace
 
-- **Mensaje**: cualquier texto, emoticonos incluidos.
+- **Mensaje**: cualquier texto, emoticonos incluidos, **con formato por tramos**.
+  Al seleccionar texto aparece *Formato* en el menú de iOS (negrita, cursiva,
+  subrayado) y la barra sobre el teclado añade el color, de modo que un mismo
+  mensaje puede llevar varios colores.
 - **Tipografía**: catorce tipos, desde los diseños del sistema (redondeada, con
   remates, monoespaciada) hasta Futura, Marker Felt o Snell Roundhand.
 - **Color del texto**: tono, saturación y brillo con tres deslizadores.

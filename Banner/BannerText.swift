@@ -1,0 +1,102 @@
+import UIKit
+
+/// Utilidades del texto con atributos del rótulo.
+///
+/// El mensaje se guarda como `NSAttributedString` para poder llevar negrita,
+/// cursiva, subrayado y colores por tramos. Lo que se conserva de cada tramo es
+/// la *intención* —los rasgos y, si lo hay, un color propio—, no el tipo ni el
+/// cuerpo concretos: esos se resuelven al dibujar, porque dependen de la
+/// tipografía elegida y de la altura de la pantalla.
+enum BannerText {
+
+    /// Marca los tramos cuyo color eligió el usuario.
+    ///
+    /// Sin esta marca no se podría distinguir el color explícito del que UIKit
+    /// pone por defecto en el editor, y todo el texto quedaría fijado a ese
+    /// color en vez de seguir al color base del rótulo.
+    static let customColorKey = NSAttributedString.Key("com.cornellana.banner.customColor")
+
+    /// Cuerpo con el que se edita el mensaje en la pantalla de ajustes.
+    static let editingFontSize: CGFloat = 20
+
+    // MARK: - Construcción
+
+    /// Crea un mensaje sin atributos a partir de texto plano.
+    /// - Parameter string: Texto de partida.
+    static func plain(_ string: String) -> NSAttributedString {
+        NSAttributedString(
+            string: string,
+            attributes: [
+                .font: UIFont.systemFont(ofSize: editingFontSize),
+                .foregroundColor: UIColor.label
+            ]
+        )
+    }
+
+    /// Aplica al mensaje la tipografía, el cuerpo y el color base del rótulo.
+    ///
+    /// - Parameters:
+    ///   - source: Mensaje tal y como lo editó el usuario.
+    ///   - typeface: Tipografía elegida para el rótulo.
+    ///   - fontSize: Cuerpo en puntos, derivado de la altura de la pantalla.
+    ///   - baseColor: Color de los tramos a los que el usuario no dio uno propio.
+    /// - Returns: El mensaje listo para dibujar.
+    static func styled(
+        _ source: NSAttributedString,
+        typeface: BannerTypeface,
+        fontSize: CGFloat,
+        baseColor: UIColor
+    ) -> NSAttributedString {
+        let result = NSMutableAttributedString(attributedString: source)
+        let whole = NSRange(location: 0, length: result.length)
+        guard whole.length > 0 else { return result }
+
+        result.enumerateAttributes(in: whole, options: []) { attributes, range, _ in
+            let editedFont = attributes[.font] as? UIFont
+            let traits = editedFont?.fontDescriptor.symbolicTraits ?? []
+            result.addAttribute(
+                .font,
+                value: font(for: typeface, size: fontSize, traits: traits),
+                range: range
+            )
+
+            let hasCustomColor = attributes[customColorKey] != nil
+            if !hasCustomColor {
+                result.addAttribute(.foregroundColor, value: baseColor, range: range)
+            }
+        }
+        return result
+    }
+
+    /// Fuente del rótulo con los rasgos del tramo (negrita y cursiva) aplicados.
+    private static func font(
+        for typeface: BannerTypeface,
+        size: CGFloat,
+        traits: UIFontDescriptor.SymbolicTraits
+    ) -> UIFont {
+        let base = typeface.uiFont(size: size, bold: traits.contains(.traitBold))
+        guard traits.contains(.traitItalic),
+              let descriptor = base.fontDescriptor.withSymbolicTraits(
+                  base.fontDescriptor.symbolicTraits.union(.traitItalic)
+              )
+        else { return base }
+        return UIFont(descriptor: descriptor, size: size)
+    }
+
+    // MARK: - Persistencia
+
+    /// Convierte el mensaje en datos para guardarlo.
+    ///
+    /// Se archiva en lugar de exportarlo a RTF porque el archivado conserva los
+    /// atributos propios de la app, y RTF no.
+    /// - Parameter text: Mensaje a guardar.
+    static func archive(_ text: NSAttributedString) -> Data? {
+        try? NSKeyedArchiver.archivedData(withRootObject: text, requiringSecureCoding: false)
+    }
+
+    /// Recupera un mensaje archivado.
+    /// - Parameter data: Datos devueltos por ``archive(_:)``.
+    static func unarchive(_ data: Data) -> NSAttributedString? {
+        try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSAttributedString.self, from: data)
+    }
+}

@@ -77,16 +77,20 @@ private struct PresetCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(preset.text.isEmpty ? " " : preset.text)
-                .font(preset.typeface.font(size: 40))
-                .foregroundStyle(preset.color)
-                .lineLimit(1)
-                .minimumScaleFactor(0.3)
-                .padding(.horizontal, 16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                // Proporción apaisada, como la pantalla donde se verá.
-                .frame(height: 96)
-                .background(preset.backgroundColor, in: RoundedRectangle(cornerRadius: 14))
+            AttributedLabel(
+                attributedText: BannerText.styled(
+                    preset.attributedText,
+                    typeface: preset.typeface,
+                    fontSize: 28,
+                    baseColor: UIColor(preset.color)
+                )
+            )
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            // Proporción apaisada, como la pantalla donde se verá.
+            .frame(height: 96)
+            .background(preset.backgroundColor, in: RoundedRectangle(cornerRadius: 14))
+            .clipped()
 
             HStack(spacing: 6) {
                 preset.typeface.label

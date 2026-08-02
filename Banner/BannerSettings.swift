@@ -7,8 +7,19 @@ import SwiftUI
 @Observable
 final class BannerSettings {
 
-    /// Texto que recorre la pantalla. Admite emoticonos.
-    var text: String { didSet { save(text, for: .text) } }
+    /// Mensaje que recorre la pantalla.
+    ///
+    /// Lleva atributos —negrita, cursiva, subrayado y colores por tramos—
+    /// además de admitir emoticonos.
+    var attributedText: NSAttributedString {
+        didSet {
+            guard let data = BannerText.archive(attributedText) else { return }
+            save(data, for: .richText)
+        }
+    }
+
+    /// El mensaje sin atributos, para comprobaciones y para mostrarlo en listas.
+    var plainText: String { attributedText.string }
 
     /// Tipografía con la que se dibuja el texto.
     var typeface: BannerTypeface { didSet { save(typeface.rawValue, for: .typeface) } }
@@ -63,7 +74,7 @@ final class BannerSettings {
     /// Restituye un mensaje guardado con todas sus características.
     /// - Parameter preset: Mensaje que se quiere volver a usar.
     func apply(_ preset: BannerPreset) {
-        text = preset.text
+        attributedText = preset.attributedText
         typeface = preset.typeface
         hue = preset.hue
         saturation = preset.saturation
@@ -91,8 +102,16 @@ final class BannerSettings {
 
     init() {
         let defaults = UserDefaults.standard
-        text = defaults.string(forKey: Key.text.rawValue)
-            ?? String(localized: "banner.defaultText", comment: "Texto de ejemplo que aparece la primera vez")
+        // Los mensajes guardados antes de admitir atributos se recuperan como
+        // texto plano.
+        if let data = defaults.data(forKey: Key.richText.rawValue),
+           let restored = BannerText.unarchive(data) {
+            attributedText = restored
+        } else {
+            let legacy = defaults.string(forKey: Key.text.rawValue)
+                ?? String(localized: "banner.defaultText", comment: "Texto de ejemplo que aparece la primera vez")
+            attributedText = BannerText.plain(legacy)
+        }
         typeface = defaults.string(forKey: Key.typeface.rawValue)
             .flatMap(BannerTypeface.init(rawValue:)) ?? .rounded
         language = defaults.string(forKey: Key.language.rawValue)
@@ -112,7 +131,7 @@ final class BannerSettings {
     // MARK: - Persistencia
 
     private enum Key: String {
-        case text, typeface, language, hue, saturation, brightness
+        case text, richText, typeface, language, hue, saturation, brightness
         case backgroundHue, backgroundSaturation, backgroundBrightness
         case speed, heightFraction, flashRate
     }

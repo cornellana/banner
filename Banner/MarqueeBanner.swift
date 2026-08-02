@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// Rótulo desplazándose sobre su fondo, con los destellos aplicados.
 ///
@@ -21,7 +22,16 @@ struct MarqueeBanner: View {
         GeometryReader { proxy in
             let size = proxy.size
             let fontSize = max(12, size.height * settings.heightFraction)
-            let textWidth = Self.width(of: displayText, typeface: settings.typeface, fontSize: fontSize)
+            // En el destello se intercambian los dos colores, para que el texto
+            // siga legible cuando el fondo se enciende.
+            let baseColor = UIColor(isLit ? settings.backgroundColor : settings.color)
+            let styled = BannerText.styled(
+                displayText,
+                typeface: settings.typeface,
+                fontSize: fontSize,
+                baseColor: baseColor
+            )
+            let textWidth = styled.size().width
             // Recorrido completo: entra por la derecha y sale del todo por la
             // izquierda antes de volver a empezar.
             let duration = Double(textWidth + size.width) / max(speed, 1)
@@ -30,31 +40,31 @@ struct MarqueeBanner: View {
                 (isLit ? settings.color : settings.backgroundColor)
 
                 MarqueeText(
-                    text: displayText,
-                    font: settings.typeface.font(size: fontSize),
-                    // En el destello se intercambian los dos colores, para que
-                    // el texto siga legible cuando el fondo se enciende.
-                    color: isLit ? settings.backgroundColor : settings.color,
+                    text: styled,
                     textWidth: textWidth,
                     canvas: size,
                     duration: duration
                 )
                 // Recrear la vista es la forma de reiniciar el recorrido cuando
-                // cambia el texto, la tipografía, el tamaño o la velocidad.
-                .id("\(displayText)|\(settings.typeface.rawValue)|\(fontSize)|\(speed)|\(size.width)")
+                // cambia el mensaje, la tipografía, el tamaño o la velocidad.
+                .id("\(styled.string)|\(Int(textWidth))|\(Int(fontSize))|\(speed)|\(size.width)")
                 .clipped()
             }
         }
         .task { await flashLoop() }
     }
 
-    /// Texto mostrado: los saltos de línea se sustituyen por espacios porque el
-    /// rótulo es siempre de una sola línea.
-    private var displayText: String {
-        let cleaned = settings.text
-            .replacingOccurrences(of: "\n", with: " ")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        return cleaned.isEmpty ? " " : cleaned + "   "
+    /// Mensaje listo para desplazarse: los saltos de línea se sustituyen por
+    /// espacios porque el rótulo es siempre de una sola línea.
+    private var displayText: NSAttributedString {
+        let source = settings.attributedText
+        guard source.length > 0 else { return BannerText.plain(" ") }
+
+        let cleaned = NSMutableAttributedString(attributedString: source)
+        while let range = cleaned.string.range(of: "\n") {
+            cleaned.replaceCharacters(in: NSRange(range, in: cleaned.string), with: " ")
+        }
+        return cleaned
     }
 
     /// Alterna la fase del destello mientras la vista está en pantalla.
@@ -72,16 +82,6 @@ struct MarqueeBanner: View {
             isLit.toggle()
         }
     }
-
-    /// Anchura que ocupará el texto con la fuente indicada.
-    ///
-    /// Se mide con UIKit en lugar de con una `PreferenceKey` para no encadenar
-    /// una nueva pasada de layout con cada cambio. La fuente de UIKit es la misma
-    /// que usa `Text`, y el sistema aplica el mismo repertorio de fuentes de
-    /// reserva para los emoticonos.
-    private static func width(of text: String, typeface: BannerTypeface, fontSize: CGFloat) -> CGFloat {
-        (text as NSString).size(withAttributes: [.font: typeface.uiFont(size: fontSize)]).width
-    }
 }
 
 // MARK: - Texto animado
@@ -93,9 +93,7 @@ struct MarqueeBanner: View {
 /// cada fotograma. El estado propio de la vista permite reiniciar el recorrido
 /// recreándola con `.id(_:)`.
 private struct MarqueeText: View {
-    let text: String
-    let font: Font
-    let color: Color
+    let text: NSAttributedString
     let textWidth: CGFloat
     let canvas: CGSize
     let duration: Double
@@ -103,10 +101,7 @@ private struct MarqueeText: View {
     @State private var hasScrolled = false
 
     var body: some View {
-        Text(text)
-            .font(font)
-            .foregroundStyle(color)
-            .lineLimit(1)
+        AttributedLabel(attributedText: text)
             .fixedSize()
             .offset(x: hasScrolled ? -textWidth : canvas.width)
             .frame(width: canvas.width, height: canvas.height, alignment: .leading)

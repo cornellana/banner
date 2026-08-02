@@ -224,6 +224,48 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Velocidad" } }
       }
     },
+    "settings.text.bold" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Negreta" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bold" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Negrita" } }
+      }
+    },
+    "settings.text.italic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Cursiva" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Italic" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cursiva" } }
+      }
+    },
+    "settings.text.underline" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Subratllat" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Underline" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Subrayado" } }
+      }
+    },
+    "settings.text.clearColor" : {
+      "comment" : "Botón que devuelve la selección al color base",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Treu el color" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove color" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Quitar color" } }
+      }
+    },
+    "settings.text.color" : {
+      "comment" : "Selector de color para el texto seleccionado",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Color de la selecció" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Selection color" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Color de la selección" } }
+      }
+    },
     "settings.text.footer" : {
       "extractionState" : "manual",
       "localizations" : {
