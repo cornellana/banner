@@ -46,7 +46,7 @@ struct BannerScreen: View {
                 )
         }
         .ignoresSafeArea()
-        .background(Color.black)
+        .background(settings.backgroundColor)
         .overlay(alignment: .top) { controls }
         .overlay(alignment: .bottom) { hint }
         .statusBarHidden()
@@ -82,14 +82,14 @@ struct BannerScreen: View {
             let duration = Double(textWidth + size.width) / speed
 
             ZStack {
-                (isLit ? settings.color : Color.black)
+                (isLit ? settings.color : settings.backgroundColor)
 
                 MarqueeText(
                     text: displayText,
                     font: settings.typeface.font(size: fontSize),
-                    // Sobre el destello se invierte el texto para que siga
-                    // legible cuando el fondo se enciende con su color.
-                    color: isLit ? .black : settings.color,
+                    // En el destello se intercambian los dos colores, para que
+                    // el texto siga legible cuando el fondo se enciende.
+                    color: isLit ? settings.backgroundColor : settings.color,
                     textWidth: textWidth,
                     canvas: size,
                     duration: duration

@@ -19,6 +19,7 @@ struct ContentView: View {
                     textSection
                     typefaceSection
                     colorSection
+                    backgroundSection
                     speedSection
                     sizeSection
                     flashSection
@@ -82,7 +83,7 @@ struct ContentView: View {
                     .minimumScaleFactor(0.4)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(Color.black, in: RoundedRectangle(cornerRadius: 12))
+                    .background(settings.backgroundColor, in: RoundedRectangle(cornerRadius: 12))
             }
         }
     }
@@ -111,6 +112,48 @@ struct ContentView: View {
                     colors: [
                         Color(hue: settings.hue, saturation: settings.saturation, brightness: 0),
                         Color(hue: settings.hue, saturation: settings.saturation, brightness: 1)
+                    ]
+                )
+            }
+        }
+    }
+
+    /// Brillo con el que se dibujan las barras de tono y saturación del fondo.
+    ///
+    /// Se mantiene un mínimo visible aunque el fondo elegido sea negro: si no,
+    /// las barras serían dos rectángulos oscuros sin información de color.
+    private var previewBrightness: Double {
+        max(settings.backgroundBrightness, 0.55)
+    }
+
+    private var backgroundSection: some View {
+        SettingsCard(title: "settings.background.header", footer: "settings.background.footer") {
+            VStack(spacing: 18) {
+                GradientSlider(
+                    title: "settings.color.brightness",
+                    value: $settings.backgroundBrightness,
+                    colors: [
+                        Color(hue: settings.backgroundHue, saturation: settings.backgroundSaturation, brightness: 0),
+                        Color(hue: settings.backgroundHue, saturation: settings.backgroundSaturation, brightness: 1)
+                    ]
+                )
+                GradientSlider(
+                    title: "settings.color.hue",
+                    value: $settings.backgroundHue,
+                    colors: stride(from: 0.0, through: 1.0, by: 1.0 / 12.0).map {
+                        Color(
+                            hue: $0,
+                            saturation: settings.backgroundSaturation,
+                            brightness: previewBrightness
+                        )
+                    }
+                )
+                GradientSlider(
+                    title: "settings.color.saturation",
+                    value: $settings.backgroundSaturation,
+                    colors: [
+                        Color(hue: settings.backgroundHue, saturation: 0, brightness: previewBrightness),
+                        Color(hue: settings.backgroundHue, saturation: 1, brightness: previewBrightness)
                     ]
                 )
             }

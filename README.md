@@ -10,7 +10,9 @@ anchura.
 - **Mensaje**: cualquier texto, emoticonos incluidos.
 - **Tipografía**: catorce tipos, desde los diseños del sistema (redondeada, con
   remates, monoespaciada) hasta Futura, Marker Felt o Snell Roundhand.
-- **Color**: tono, saturación y brillo con tres deslizadores.
+- **Color del texto**: tono, saturación y brillo con tres deslizadores.
+- **Fondo**: los mismos tres deslizadores; con el brillo a cero queda negro, que
+  es el valor por defecto.
 - **Velocidad**: de 40 a 1600 puntos por segundo.
 - **Tamaño**: proporción de la altura de la pantalla que ocupa el texto.
 - **Destellos**: el fondo parpadea en el color elegido para llamar la atención.

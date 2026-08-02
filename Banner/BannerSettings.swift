@@ -25,6 +25,15 @@ final class BannerSettings {
     /// Luminosidad del color en el rango 0...1.
     var brightness: Double { didSet { save(brightness, for: .brightness) } }
 
+    /// Tono del fondo en el espacio HSB, en el rango 0...1.
+    var backgroundHue: Double { didSet { save(backgroundHue, for: .backgroundHue) } }
+
+    /// Saturación del fondo en el rango 0...1.
+    var backgroundSaturation: Double { didSet { save(backgroundSaturation, for: .backgroundSaturation) } }
+
+    /// Luminosidad del fondo en el rango 0...1; en 0 el fondo es negro.
+    var backgroundBrightness: Double { didSet { save(backgroundBrightness, for: .backgroundBrightness) } }
+
     /// Velocidad de desplazamiento en puntos por segundo.
     var speed: Double { didSet { save(speed, for: .speed) } }
 
@@ -41,9 +50,14 @@ final class BannerSettings {
     /// Destellos por segundo cuando ``flashesEnabled`` está activo.
     var flashRate: Double { didSet { save(flashRate, for: .flashRate) } }
 
-    /// Color resultante de los tres deslizadores HSB.
+    /// Color del texto, resultante de los tres deslizadores HSB.
     var color: Color {
         Color(hue: hue, saturation: saturation, brightness: brightness)
+    }
+
+    /// Color del fondo del rótulo.
+    var backgroundColor: Color {
+        Color(hue: backgroundHue, saturation: backgroundSaturation, brightness: backgroundBrightness)
     }
 
     // MARK: - Límites de los deslizadores
@@ -70,6 +84,10 @@ final class BannerSettings {
         hue = defaults.value(forKey: Key.hue.rawValue) as? Double ?? 0.12
         saturation = defaults.value(forKey: Key.saturation.rawValue) as? Double ?? 1.0
         brightness = defaults.value(forKey: Key.brightness.rawValue) as? Double ?? 1.0
+        backgroundHue = defaults.value(forKey: Key.backgroundHue.rawValue) as? Double ?? 0
+        backgroundSaturation = defaults.value(forKey: Key.backgroundSaturation.rawValue) as? Double ?? 0
+        // Por defecto el fondo es negro, que es lo que más contrasta con el texto.
+        backgroundBrightness = defaults.value(forKey: Key.backgroundBrightness.rawValue) as? Double ?? 0
         speed = defaults.value(forKey: Key.speed.rawValue) as? Double ?? 350
         heightFraction = defaults.value(forKey: Key.heightFraction.rawValue) as? Double ?? 0.8
         flashRate = defaults.value(forKey: Key.flashRate.rawValue) as? Double ?? 2
@@ -78,7 +96,9 @@ final class BannerSettings {
     // MARK: - Persistencia
 
     private enum Key: String {
-        case text, typeface, language, hue, saturation, brightness, speed, heightFraction, flashRate
+        case text, typeface, language, hue, saturation, brightness
+        case backgroundHue, backgroundSaturation, backgroundBrightness
+        case speed, heightFraction, flashRate
     }
 
     private func save(_ value: Any, for key: Key) {

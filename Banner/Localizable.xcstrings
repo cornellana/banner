@@ -37,6 +37,22 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Hecho" } }
       }
     },
+    "settings.background.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Amb la brillantor a zero el fons és negre." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "With brightness at zero the background is black." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Con el brillo a cero el fondo es negro." } }
+      }
+    },
+    "settings.background.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Fons" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Background" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fondo" } }
+      }
+    },
     "settings.color.brightness" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -48,9 +64,9 @@
     "settings.color.header" : {
       "extractionState" : "manual",
       "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Color" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Color" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Color" } }
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Color del text" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Text color" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Color del texto" } }
       }
     },
     "settings.color.hue" : {
