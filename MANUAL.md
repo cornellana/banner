@@ -13,26 +13,30 @@ La app tiene dos pantallas: la de **ajustes**, donde se prepara todo, y el
 ## 1. La pantalla de ajustes
 
 Se recorre de arriba abajo. Cada bloque cambia una cosa y el resultado se ve al
-momento en la **vista previa** (el rectángulo con el fondo y los colores reales
-que hay bajo *Tipografía*).
+momento en la **vista previa** —el rectángulo con el fondo y los colores reales
+que hay bajo *Tipografía*—.
+
+<img src="docs/ajustes-mensaje.png" width="330" alt="Pantalla de ajustes: mensaje, tipografía y color del texto">
 
 ### Mensaje
 
 El campo de texto admite cualquier cosa, emoticonos incluidos. Puede ocupar
 varias líneas mientras lo escribes; en el rótulo saldrá todo seguido en una sola.
 
-**Dar formato a un trozo del mensaje.** Selecciona el texto (toca dos veces una
-palabra, o toca y elige *Seleccionar*) y tienes dos caminos:
+**Dar formato a un trozo del mensaje.** Selecciona el texto —toca dos veces una
+palabra, o toca y elige *Seleccionar*— y tienes dos caminos:
 
-- En el menú que aparece sobre la selección, toca la flecha **›** y luego
-  **Formato**: *Negrita*, *Cursiva*, *Subrayado*.
+- En el menú que aparece sobre la selección, **Formato**: *Negrita*, *Cursiva*,
+  *Subrayado*. Si no lo ves directamente, toca antes la flecha **›**.
 - En la barra que sale **sobre el teclado**: **B** (negrita), *I* (cursiva),
   **U** (subrayado), la **paleta** (color del trozo seleccionado) y la **brocha**
   (le quita el color propio y lo devuelve al color general).
 
-Así puedes tener **varios colores en un mismo mensaje**: por ejemplo el nombre en
-verde y el resto en amarillo. El botón **Hecho** de esa misma barra cierra el
-teclado.
+<img src="docs/formato.png" width="330" alt="Menú Formato sobre el texto seleccionado">
+
+Así puedes tener **varios colores en un mismo mensaje**: en el ejemplo, «HOLA!
+FELIZ» en verde y «CUMPLE» en amarillo. El botón **Hecho** de esa misma barra
+cierra el teclado.
 
 > La negrita se nota poco: el rótulo ya se dibuja con un trazo muy grueso, y la
 > negrita sube al más grueso disponible. La cursiva y el color se ven mucho más.
@@ -66,10 +70,14 @@ Aquí se decide si las letras van rectas o suben y bajan.
 3. O usa uno de los atajos: **Onda**, **Sierra** o **Recta**.
 4. **Usar** lo aplica; **Cancelar** lo descarta.
 
+<img src="docs/trayectoria.png" width="330" alt="Lienzo de trayectoria con un diente de sierra dibujado a mano">
+
 Las letras suben y bajan siguiendo ese trazo mientras cruzan la pantalla, cada
 una a su turno. El dibujo **se repite** a lo largo del recorrido, así que un
 diente de sierra encadena sin saltos hasta que el mensaje termina de pasar. El
 botón **Recta**, junto al de dibujar, quita la trayectoria.
+
+<img src="docs/ajustes-trayectoria.png" width="330" alt="Tarjeta de trayectoria, velocidad, tamaño, destellos e idioma">
 
 > Si quieres subidas y bajadas más amplias, baja el deslizador de **Tamaño**: la
 > trayectoria se ajusta a la altura libre para que las letras no se salgan de la
@@ -113,11 +121,17 @@ Al abrirlo, la pantalla **gira sola a apaisado** —da igual cómo sujetes el
 teléfono—, desaparece la barra de estado y la pantalla **no se apaga** mientras
 dure.
 
+<img src="docs/rotulo.png" width="620" alt="El rótulo desfilando con las letras siguiendo el diente de sierra">
+
 Durante los primeros segundos aparece abajo un recordatorio: *«Toca la pantalla
 para volver a los ajustes · Volumen: destellos»*.
 
 - **Un toque** en la pantalla muestra la barra de control, que se oculta sola a
-  los diez segundos. Contiene:
+  los diez segundos.
+
+<img src="docs/barra-controles.png" width="620" alt="Barra de control del rótulo: Ajustes, velocidad y destellos">
+
+  Contiene:
   - **Ajustes**: vuelve a la pantalla de configuración.
   - Un deslizador de **velocidad**, que se aplica al soltarlo.
   - Un **rayo** que enciende o apaga los destellos (lo mismo que los botones de
@@ -136,6 +150,8 @@ Arriba a la derecha hay dos botones:
   frecuencia de destello—. El teléfono vibra al guardarlo.
 - **Biblioteca** (la pila de tarjetas): abre *Mensajes guardados*.
 
+<img src="docs/biblioteca.png" width="330" alt="Biblioteca de mensajes guardados">
+
 En la biblioteca, cada tarjeta **reproduce el aspecto real** del rótulo, con la
 tipografía y la fecha debajo:
 
@@ -150,6 +166,8 @@ tipografía y la fecha debajo:
 El rótulo puede verse en una pantalla grande mientras el iPhone se queda con los
 ajustes: lo que cambies allí se ve al instante en la pantalla grande. **No es un
 duplicado**, es la app dibujando a pantalla completa en el televisor.
+
+<img src="docs/proyeccion-tv.jpg" width="620" alt="El rótulo proyectado en un televisor por AirPlay">
 
 **Por AirPlay (Apple TV o televisor compatible)**
 
@@ -194,4 +212,9 @@ externa»*.
 ## 6. Requisitos
 
 iPhone o iPad con **iOS 17 o posterior**. La proyección en pantalla externa
-funciona por AirPlay o por cable; el simulador de Xcode no la reproduce.
+funciona por AirPlay o por cable.
+
+---
+
+*Las capturas de este manual están tomadas del simulador de iOS; la de la
+proyección, de un televisor real.*
