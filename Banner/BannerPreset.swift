@@ -27,6 +27,9 @@ struct BannerPreset: Identifiable, Codable, Hashable {
     var heightFraction: Double
     var flashRate: Double
 
+    /// Trayectoria vertical; ausente en los mensajes guardados antes de tenerla.
+    var path: BannerPath?
+
     /// Mensaje con atributos, ya sea del formato actual o de uno anterior.
     var attributedText: NSAttributedString {
         if let textData, let restored = BannerText.unarchive(textData) {
@@ -61,6 +64,7 @@ struct BannerPreset: Identifiable, Codable, Hashable {
         backgroundHue = settings.backgroundHue
         backgroundSaturation = settings.backgroundSaturation
         backgroundBrightness = settings.backgroundBrightness
+        path = settings.path
         speed = settings.speed
         heightFraction = settings.heightFraction
         flashRate = settings.flashRate

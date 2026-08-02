@@ -55,6 +55,78 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Proyectando en una pantalla externa" } }
       }
     },
+    "path.cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Cancel·la" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cancelar" } }
+      }
+    },
+    "path.draw" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Dibuixa la trajectòria" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw path" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Dibujar trayectoria" } }
+      }
+    },
+    "path.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Les lletres pugen i baixen seguint el traç mentre travessen la pantalla. El dibuix es repeteix fins que el missatge acaba de passar." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The letters rise and fall along the stroke as they cross the screen. The drawing repeats until the whole message has gone by." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Las letras suben y bajan siguiendo el trazo mientras cruzan la pantalla. El dibujo se repite hasta que el mensaje termina de pasar." } }
+      }
+    },
+    "path.instructions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Dibuixa amb el dit el recorregut, d'esquerra a dreta." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw the path with your finger, from left to right." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Dibuja con el dedo el recorrido, de izquierda a derecha." } }
+      }
+    },
+    "path.preset.sawtooth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Serra" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sawtooth" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sierra" } }
+      }
+    },
+    "path.preset.straight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Recta" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Straight" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recta" } }
+      }
+    },
+    "path.preset.wave" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ona" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wave" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Onda" } }
+      }
+    },
+    "path.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Trajectòria" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Path" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Trayectoria" } }
+      }
+    },
+    "path.use" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Fes-la servir" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Use" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Usar" } }
+      }
+    },
     "presets.delete" : {
       "extractionState" : "manual",
       "localizations" : {

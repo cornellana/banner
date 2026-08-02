@@ -13,6 +13,7 @@
 		2FC229C1D6B55F92B90106EF /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A37860031F905218F9A1C0 /* AppLanguage.swift */; };
 		31077BF6E0D1A02ACBD869F8 /* VolumeButtonWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D999E37244CB8525546A /* VolumeButtonWatcher.swift */; };
 		34B605CC23CD8472594DCD8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD1F25E20104F4C7D105DA /* Assets.xcassets */; };
+		374A331C837320E5E2967545 /* PathEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10B343E7FD1B7D97065E832 /* PathEditorView.swift */; };
 		3C2AECD69E903A4C236A15CB /* BannerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3C45D7D7A10458FEA5767 /* BannerScreen.swift */; };
 		46450E88E96B1C967323F99A /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DEA4B02C571CDC50CC2050 /* AppEnvironment.swift */; };
 		47484327344DBF749DB4D06D /* OrientationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB19B42625E5AA8EEBBABC4 /* OrientationController.swift */; };
@@ -23,18 +24,22 @@
 		B767398CE1D4C7D677FC009D /* BannerPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC38536DEA1E8C4DD86A85E /* BannerPreset.swift */; };
 		BA7D095A4E4C212CDE6F9BEF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9E47CCCACB438704EA74B1BC /* Localizable.xcstrings */; };
 		BBD759C1875B938D47D06D3A /* MarqueeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCBC88672669CD0A7BF6307 /* MarqueeBanner.swift */; };
+		DF4A0F59C5BC80F81C4842A7 /* MarqueeGlyphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076010C0E05A90E468C60FFE /* MarqueeGlyphView.swift */; };
 		F0C57AA31CF50CF4A6672AAE /* PresetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0F7AFD4373DFD8D7F4DC0 /* PresetStore.swift */; };
 		F1C20BEBBA5288ED96E0C5B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D8F9ADBC6C0AE908D728C2 /* ContentView.swift */; };
+		F7BD22F78455B2D2A6AB2DFE /* BannerPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679ED539A2C2C8DC57EFE9EB /* BannerPath.swift */; };
 		FB404BF28899CC1E92EE67C0 /* BannerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F2F0BBAB7769B43CA6BCD /* BannerText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		076010C0E05A90E468C60FFE /* MarqueeGlyphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeGlyphView.swift; sourceTree = "<group>"; };
 		0AAD1F25E20104F4C7D105DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F57DE90B827A053E7BD011D /* BannerTypeface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTypeface.swift; sourceTree = "<group>"; };
 		109D2E604A7836888EC6EE6C /* PresetLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetLibraryView.swift; sourceTree = "<group>"; };
 		35660DC2BB84B58D3D282CA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5EC0D999E37244CB8525546A /* VolumeButtonWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeButtonWatcher.swift; sourceTree = "<group>"; };
 		63EA4B7761A885DC51416987 /* BannerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerSettings.swift; sourceTree = "<group>"; };
+		679ED539A2C2C8DC57EFE9EB /* BannerPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerPath.swift; sourceTree = "<group>"; };
 		7DCBC88672669CD0A7BF6307 /* MarqueeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeBanner.swift; sourceTree = "<group>"; };
 		7FB19B42625E5AA8EEBBABC4 /* OrientationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationController.swift; sourceTree = "<group>"; };
 		84C0F7AFD4373DFD8D7F4DC0 /* PresetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetStore.swift; sourceTree = "<group>"; };
@@ -43,6 +48,7 @@
 		98D8F9ADBC6C0AE908D728C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9E47CCCACB438704EA74B1BC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9F722021D5FEE474F44A033C /* Banner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Banner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10B343E7FD1B7D97065E832 /* PathEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathEditorView.swift; sourceTree = "<group>"; };
 		C8A37860031F905218F9A1C0 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		D4DEA4B02C571CDC50CC2050 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		DEC38536DEA1E8C4DD86A85E /* BannerPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerPreset.swift; sourceTree = "<group>"; };
@@ -61,6 +67,7 @@
 				0AAD1F25E20104F4C7D105DA /* Assets.xcassets */,
 				86E6F7B2690C0B505DE7AE5D /* AttributedLabel.swift */,
 				EFB739BE48F9625F57109AC4 /* BannerApp.swift */,
+				679ED539A2C2C8DC57EFE9EB /* BannerPath.swift */,
 				DEC38536DEA1E8C4DD86A85E /* BannerPreset.swift */,
 				E5A3C45D7D7A10458FEA5767 /* BannerScreen.swift */,
 				63EA4B7761A885DC51416987 /* BannerSettings.swift */,
@@ -71,7 +78,9 @@
 				35660DC2BB84B58D3D282CA0 /* Info.plist */,
 				9E47CCCACB438704EA74B1BC /* Localizable.xcstrings */,
 				7DCBC88672669CD0A7BF6307 /* MarqueeBanner.swift */,
+				076010C0E05A90E468C60FFE /* MarqueeGlyphView.swift */,
 				7FB19B42625E5AA8EEBBABC4 /* OrientationController.swift */,
+				A10B343E7FD1B7D97065E832 /* PathEditorView.swift */,
 				109D2E604A7836888EC6EE6C /* PresetLibraryView.swift */,
 				84C0F7AFD4373DFD8D7F4DC0 /* PresetStore.swift */,
 				E833E2A1B097B29385BA0762 /* RichTextEditor.swift */,
@@ -173,6 +182,7 @@
 				2FC229C1D6B55F92B90106EF /* AppLanguage.swift in Sources */,
 				1A47344C35C24335B1557614 /* AttributedLabel.swift in Sources */,
 				82B6F779D8F744BEE6CE347E /* BannerApp.swift in Sources */,
+				F7BD22F78455B2D2A6AB2DFE /* BannerPath.swift in Sources */,
 				B767398CE1D4C7D677FC009D /* BannerPreset.swift in Sources */,
 				3C2AECD69E903A4C236A15CB /* BannerScreen.swift in Sources */,
 				03309D0568A53077B48BAB78 /* BannerSettings.swift in Sources */,
@@ -181,7 +191,9 @@
 				F1C20BEBBA5288ED96E0C5B2 /* ContentView.swift in Sources */,
 				A17219FBE75E2533AEEAEA26 /* ExternalDisplaySceneDelegate.swift in Sources */,
 				BBD759C1875B938D47D06D3A /* MarqueeBanner.swift in Sources */,
+				DF4A0F59C5BC80F81C4842A7 /* MarqueeGlyphView.swift in Sources */,
 				47484327344DBF749DB4D06D /* OrientationController.swift in Sources */,
+				374A331C837320E5E2967545 /* PathEditorView.swift in Sources */,
 				0924C5174611663F644D39E7 /* PresetLibraryView.swift in Sources */,
 				F0C57AA31CF50CF4A6672AAE /* PresetStore.swift in Sources */,
 				55DFB6F28E508A7B50813284 /* RichTextEditor.swift in Sources */,

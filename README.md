@@ -16,6 +16,9 @@ anchura.
 - **Color del texto**: tono, saturación y brillo con tres deslizadores.
 - **Fondo**: los mismos tres deslizadores; con el brillo a cero queda negro, que
   es el valor por defecto.
+- **Trayectoria**: un lienzo tipo firma donde se dibuja con el dedo el recorrido
+  (o se elige onda, sierra o recta); las letras suben y bajan siguiéndolo
+  mientras cruzan la pantalla. El trazo se repite a lo largo del recorrido.
 - **Velocidad**: de 40 a 1600 puntos por segundo.
 - **Tamaño**: proporción de la altura de la pantalla que ocupa el texto.
 - **Destellos**: el fondo parpadea en el color elegido para llamar la atención.

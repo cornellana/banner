@@ -31,24 +31,11 @@ struct MarqueeBanner: View {
                 fontSize: fontSize,
                 baseColor: baseColor
             )
-            let textWidth = styled.size().width
-            // Recorrido completo: entra por la derecha y sale del todo por la
-            // izquierda antes de volver a empezar.
-            let duration = Double(textWidth + size.width) / max(speed, 1)
 
             ZStack {
                 (isLit ? settings.color : settings.backgroundColor)
 
-                MarqueeText(
-                    text: styled,
-                    textWidth: textWidth,
-                    canvas: size,
-                    duration: duration
-                )
-                // Recrear la vista es la forma de reiniciar el recorrido cuando
-                // cambia el mensaje, la tipografía, el tamaño o la velocidad.
-                .id("\(styled.string)|\(Int(textWidth))|\(Int(fontSize))|\(speed)|\(size.width)")
-                .clipped()
+                MarqueeGlyphView(text: styled, path: settings.path, speed: speed)
             }
         }
         .task { await flashLoop() }
@@ -81,34 +68,5 @@ struct MarqueeBanner: View {
             }
             isLit.toggle()
         }
-    }
-}
-
-// MARK: - Texto animado
-
-/// Texto que recorre el ancho del rótulo con una animación cíclica.
-///
-/// La animación se declara con `.animation(_:value:)` y `repeatForever`, de modo
-/// que la ejecuta el servidor de render y el hilo principal no interviene en
-/// cada fotograma. El estado propio de la vista permite reiniciar el recorrido
-/// recreándola con `.id(_:)`.
-private struct MarqueeText: View {
-    let text: NSAttributedString
-    let textWidth: CGFloat
-    let canvas: CGSize
-    let duration: Double
-
-    @State private var hasScrolled = false
-
-    var body: some View {
-        AttributedLabel(attributedText: text)
-            .fixedSize()
-            .offset(x: hasScrolled ? -textWidth : canvas.width)
-            .frame(width: canvas.width, height: canvas.height, alignment: .leading)
-            .animation(
-                .linear(duration: duration).repeatForever(autoreverses: false),
-                value: hasScrolled
-            )
-            .onAppear { hasScrolled = true }
     }
 }

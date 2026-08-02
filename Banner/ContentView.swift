@@ -17,6 +17,7 @@ struct ContentView: View {
 
     @State private var isShowingBanner = false
     @State private var isShowingLibrary = false
+    @State private var isShowingPathEditor = false
 
     /// Contador que dispara la respuesta háptica al guardar.
     @State private var saveCount = 0
@@ -33,6 +34,7 @@ struct ContentView: View {
                     typefaceSection
                     colorSection
                     backgroundSection
+                    pathSection
                     speedSection
                     sizeSection
                     flashSection
@@ -76,6 +78,12 @@ struct ContentView: View {
                 // El rótulo se presenta en su propia escena: el idioma elegido
                 // se le inyecta de nuevo para no depender de la herencia.
                 .environment(\.locale, settings.language.locale)
+        }
+        .sheet(isPresented: $isShowingPathEditor) {
+            PathEditorView(initialPath: settings.path) { drawn in
+                settings.path = drawn
+            }
+            .environment(\.locale, settings.language.locale)
         }
         .sheet(isPresented: $isShowingLibrary) {
             PresetLibraryView(store: store) { preset in
@@ -216,6 +224,35 @@ struct ContentView: View {
         }
     }
 
+    private var pathSection: some View {
+        SettingsCard(title: "path.title", footer: "path.footer") {
+            VStack(spacing: 12) {
+                PathPreview(path: settings.path, tint: settings.color)
+                    .frame(height: 72)
+                    .frame(maxWidth: .infinity)
+                    .background(settings.backgroundColor, in: RoundedRectangle(cornerRadius: 12))
+
+                HStack {
+                    Button {
+                        richText.endEditing()
+                        isShowingPathEditor = true
+                    } label: {
+                        Label("path.draw", systemImage: "scribble.variable")
+                    }
+                    .buttonStyle(.bordered)
+
+                    Spacer()
+
+                    if !settings.path.isStraight {
+                        Button("path.preset.straight") { settings.path = .straight }
+                            .buttonStyle(.bordered)
+                    }
+                }
+                .font(.subheadline)
+            }
+        }
+    }
+
     private var speedSection: some View {
         SettingsCard(title: "settings.speed.header") {
             IconSlider(
@@ -317,6 +354,36 @@ private struct SettingsCard<Content: View>: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
+        }
+    }
+}
+
+// MARK: - Vista previa de la trayectoria
+
+/// Dibuja el trazo de la trayectoria a escala reducida.
+private struct PathPreview: View {
+    let path: BannerPath
+    let tint: Color
+
+    var body: some View {
+        GeometryReader { proxy in
+            Path { shape in
+                let steps = 120
+                for step in 0...steps {
+                    let x = Double(step) / Double(steps)
+                    let point = CGPoint(
+                        x: x * proxy.size.width,
+                        y: path.normalizedY(at: x) * proxy.size.height
+                    )
+                    if step == 0 {
+                        shape.move(to: point)
+                    } else {
+                        shape.addLine(to: point)
+                    }
+                }
+            }
+            .stroke(tint, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+            .padding(.vertical, 8)
         }
     }
 }

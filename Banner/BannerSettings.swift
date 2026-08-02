@@ -45,6 +45,14 @@ final class BannerSettings {
     /// Luminosidad del fondo en el rango 0...1; en 0 el fondo es negro.
     var backgroundBrightness: Double { didSet { save(backgroundBrightness, for: .backgroundBrightness) } }
 
+    /// Trayectoria vertical que siguen las letras al desfilar.
+    var path: BannerPath {
+        didSet {
+            guard let data = try? JSONEncoder().encode(path) else { return }
+            save(data, for: .path)
+        }
+    }
+
     /// Velocidad de desplazamiento en puntos por segundo.
     var speed: Double { didSet { save(speed, for: .speed) } }
 
@@ -82,6 +90,7 @@ final class BannerSettings {
         backgroundHue = preset.backgroundHue
         backgroundSaturation = preset.backgroundSaturation
         backgroundBrightness = preset.backgroundBrightness
+        path = preset.path ?? .straight
         speed = preset.speed
         heightFraction = preset.heightFraction
         flashRate = preset.flashRate
@@ -119,6 +128,8 @@ final class BannerSettings {
         hue = defaults.value(forKey: Key.hue.rawValue) as? Double ?? 0.12
         saturation = defaults.value(forKey: Key.saturation.rawValue) as? Double ?? 1.0
         brightness = defaults.value(forKey: Key.brightness.rawValue) as? Double ?? 1.0
+        path = defaults.data(forKey: Key.path.rawValue)
+            .flatMap { try? JSONDecoder().decode(BannerPath.self, from: $0) } ?? .straight
         backgroundHue = defaults.value(forKey: Key.backgroundHue.rawValue) as? Double ?? 0
         backgroundSaturation = defaults.value(forKey: Key.backgroundSaturation.rawValue) as? Double ?? 0
         // Por defecto el fondo es negro, que es lo que más contrasta con el texto.
@@ -133,7 +144,7 @@ final class BannerSettings {
     private enum Key: String {
         case text, richText, typeface, language, hue, saturation, brightness
         case backgroundHue, backgroundSaturation, backgroundBrightness
-        case speed, heightFraction, flashRate
+        case speed, heightFraction, flashRate, path
     }
 
     private func save(_ value: Any, for key: Key) {
