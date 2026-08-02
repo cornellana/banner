@@ -9,7 +9,15 @@ import SwiftUI
 struct ContentView: View {
     @Bindable var settings: BannerSettings
 
+    /// Mensajes guardados por el usuario.
+    let store: PresetStore
+
     @State private var isShowingBanner = false
+    @State private var isShowingLibrary = false
+
+    /// Contador que dispara la respuesta háptica al guardar.
+    @State private var saveCount = 0
+
     @FocusState private var isTextFieldFocused: Bool
 
     var body: some View {
@@ -32,11 +40,29 @@ struct ContentView: View {
             .background(Color(.systemGroupedBackground))
             .navigationTitle("settings.title")
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isTextFieldFocused = false
+                        store.save(from: settings)
+                        saveCount += 1
+                    } label: {
+                        Label("presets.save", systemImage: "square.and.arrow.down")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isTextFieldFocused = false
+                        isShowingLibrary = true
+                    } label: {
+                        Label("presets.title", systemImage: "rectangle.stack")
+                    }
+                }
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button("common.done") { isTextFieldFocused = false }
                 }
             }
+            .sensoryFeedback(.success, trigger: saveCount)
             .scrollDismissesKeyboard(.interactively)
         }
         .fullScreenCover(isPresented: $isShowingBanner) {
@@ -44,6 +70,12 @@ struct ContentView: View {
                 // El rótulo se presenta en su propia escena: el idioma elegido
                 // se le inyecta de nuevo para no depender de la herencia.
                 .environment(\.locale, settings.language.locale)
+        }
+        .sheet(isPresented: $isShowingLibrary) {
+            PresetLibraryView(store: store) { preset in
+                settings.apply(preset)
+            }
+            .environment(\.locale, settings.language.locale)
         }
     }
 
@@ -314,5 +346,5 @@ private struct GradientSlider: View {
 }
 
 #Preview {
-    ContentView(settings: BannerSettings())
+    ContentView(settings: BannerSettings(), store: PresetStore())
 }

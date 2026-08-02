@@ -60,6 +60,22 @@ final class BannerSettings {
         Color(hue: backgroundHue, saturation: backgroundSaturation, brightness: backgroundBrightness)
     }
 
+    /// Restituye un mensaje guardado con todas sus características.
+    /// - Parameter preset: Mensaje que se quiere volver a usar.
+    func apply(_ preset: BannerPreset) {
+        text = preset.text
+        typeface = preset.typeface
+        hue = preset.hue
+        saturation = preset.saturation
+        brightness = preset.brightness
+        backgroundHue = preset.backgroundHue
+        backgroundSaturation = preset.backgroundSaturation
+        backgroundBrightness = preset.backgroundBrightness
+        speed = preset.speed
+        heightFraction = preset.heightFraction
+        flashRate = preset.flashRate
+    }
+
     // MARK: - Límites de los deslizadores
 
     /// Velocidad mínima y máxima en puntos por segundo.

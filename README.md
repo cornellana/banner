@@ -20,6 +20,10 @@ anchura.
   pantalla, sin tocar nada: se observa el volumen de salida de la sesión de audio
   (iOS no entrega los botones como eventos salvo a apps de captura) y se recentra
   al llegar a los extremos para que el gesto se pueda repetir.
+- **Mensajes guardados**: el icono de guardar conserva el mensaje con todas sus
+  características, y el de la pila abre una biblioteca con la vista previa real
+  de cada uno; al tocar una se cargan sus ajustes. Se borran con una pulsación
+  larga. Se guardan en un JSON dentro del directorio de soporte de la app.
 - **Salir en cualquier momento**: un toque muestra la barra con el botón
   *Ajustes*; dos toques o un deslizamiento vertical vuelven directamente a la
   pantalla de configuración.

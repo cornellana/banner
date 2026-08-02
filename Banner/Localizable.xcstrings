@@ -37,6 +37,55 @@
         "es" : { "stringUnit" : { "state" : "translated", "value" : "Hecho" } }
       }
     },
+    "common.close" : {
+      "comment" : "Botón para cerrar la biblioteca de mensajes",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Tanca" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Close" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cerrar" } }
+      }
+    },
+    "presets.delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Elimina" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Eliminar" } }
+      }
+    },
+    "presets.empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Toca la icona de guardar per conservar el missatge actual amb el seu color, tipografia, mida i velocitat." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap the save icon to keep the current message with its color, typeface, size and speed." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Toca el icono de guardar para conservar el mensaje actual con su color, tipografía, tamaño y velocidad." } }
+      }
+    },
+    "presets.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Cap missatge desat" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No saved messages" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ningún mensaje guardado" } }
+      }
+    },
+    "presets.save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Desa el missatge" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save message" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guardar mensaje" } }
+      }
+    },
+    "presets.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Missatges desats" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Saved messages" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mensajes guardados" } }
+      }
+    },
     "settings.background.footer" : {
       "extractionState" : "manual",
       "localizations" : {

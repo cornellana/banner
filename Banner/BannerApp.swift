@@ -12,9 +12,12 @@ struct BannerApp: App {
     /// Ajustes compartidos por la pantalla de configuración y por el rótulo.
     @State private var settings = BannerSettings()
 
+    /// Mensajes guardados, disponibles durante toda la vida de la app.
+    @State private var store = PresetStore()
+
     var body: some Scene {
         WindowGroup {
-            ContentView(settings: settings)
+            ContentView(settings: settings, store: store)
                 // El idioma elegido en la propia app se aplica inyectando su
                 // configuración regional: los textos se resuelven contra ella.
                 .environment(\.locale, settings.language.locale)

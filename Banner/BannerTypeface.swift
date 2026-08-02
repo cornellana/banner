@@ -6,7 +6,7 @@ import SwiftUI
 /// y New York), que se adaptan automáticamente a cualquier idioma. El resto son
 /// familias incluidas en iOS, identificadas por su nombre PostScript; si alguna
 /// no estuviera disponible en el dispositivo se recurre al tipo de sistema.
-enum BannerTypeface: String, CaseIterable, Identifiable, Sendable {
+enum BannerTypeface: String, CaseIterable, Identifiable, Codable, Sendable {
     case rounded
     case standard
     case serif
