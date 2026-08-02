@@ -63,12 +63,39 @@ enum BannerText {
                 range: range
             )
 
-            let hasCustomColor = attributes[customColorKey] != nil
-            if !hasCustomColor {
+            // El color se respeta si lo puso el usuario, ya sea con el selector
+            // propio —que deja la marca— o desde el panel *Más…* del menú de
+            // iOS, que no la deja y solo se distingue por no ser el color con
+            // el que escribe el editor.
+            let chosenColor = attributes[.foregroundColor] as? UIColor
+            let keepsColor = attributes[customColorKey] != nil || !isEditorColor(chosenColor)
+            if !keepsColor {
                 result.addAttribute(.foregroundColor, value: baseColor, range: range)
             }
         }
         return result
+    }
+
+    /// Indica si el color es el que usa el editor por omisión.
+    ///
+    /// El editor escribe en `label`, que se resuelve en negro o en blanco según
+    /// la apariencia del sistema. Un tramo con ese color es un tramo al que el
+    /// usuario no le dio color propio, y por tanto sigue al color base del
+    /// rótulo. La contrapartida es que un negro o un blanco elegidos desde el
+    /// panel del sistema no se distinguen del valor por omisión; con el
+    /// selector propio de la app sí, porque deja marca.
+    private static func isEditorColor(_ color: UIColor?) -> Bool {
+        guard let color else { return true }
+        if color.isEqual(UIColor.label) { return true }
+
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        color
+            .resolvedColor(with: UITraitCollection(userInterfaceStyle: .light))
+            .getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        let isBlack = red < 0.02 && green < 0.02 && blue < 0.02
+        let isWhite = red > 0.98 && green > 0.98 && blue > 0.98
+        return isBlack || isWhite
     }
 
     /// Fuente del rótulo con los rasgos del tramo (negrita y cursiva) aplicados.
