@@ -1,6 +1,7 @@
 # Banner
 
-> Manual de uso para quien solo quiera usar la app: [MANUAL.md](MANUAL.md)
+> Manual de uso para quien solo quiera usar la app: **[MANUAL.pdf](MANUAL.pdf)**
+> (se genera con `scripts/build_manual.sh` a partir de `docs/manual.html`)
 
 App de iPhone y iPad que convierte la pantalla en un rótulo luminoso: escribes un
 mensaje (con emoticonos si quieres), eliges color, tipografía, tamaño y velocidad
