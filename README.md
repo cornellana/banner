@@ -1,5 +1,7 @@
 # Banner
 
+> Manual de uso para quien solo quiera usar la app: [MANUAL.md](MANUAL.md)
+
 App de iPhone y iPad que convierte la pantalla en un rótulo luminoso: escribes un
 mensaje (con emoticonos si quieres), eliges color, tipografía, tamaño y velocidad
 con deslizadores, y el texto recorre la pantalla en apaisado ocupando toda su
