@@ -28,6 +28,11 @@ targets:
             UIWindowSceneSessionRoleExternalDisplayNonInteractive:
               - UISceneConfigurationName: External Display
                 UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).ExternalDisplaySceneDelegate
+            # Rol anterior a iOS 16: algunas versiones lo siguen pidiendo al
+            # conectar por AirPlay, así que se declara también.
+            UIWindowSceneSessionRoleExternalDisplay:
+              - UISceneConfigurationName: External Display (legacy)
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).ExternalDisplaySceneDelegate
     settings:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon

@@ -30,6 +30,10 @@ struct BannerApp: App {
 
 /// Delegado mínimo cuyo único cometido es delegar la orientación permitida en
 /// ``OrientationController``.
+///
+/// La escena de la pantalla externa se declara en el manifiesto del
+/// `Info.plist`, no aquí: implementar `configurationForConnecting` deja sin
+/// delegado a la escena que crea SwiftUI y la app arranca en blanco.
 final class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
