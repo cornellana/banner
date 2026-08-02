@@ -1,6 +1,6 @@
 # Banner
 
-> Manual de uso para quien solo quiera usar la app: **[MANUAL.pdf](MANUAL.pdf)**
+> Manual de uso: **[MANUAL.pdf](MANUAL.pdf)** — con portada, índice, capturas y tabla resumen
 > (se genera con `scripts/build_manual.sh` a partir de `docs/manual.html`)
 
 App de iPhone y iPad que convierte la pantalla en un rótulo luminoso: escribes un

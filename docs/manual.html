@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <title>Banner — Manual de uso</title>
 <style>
-  @page { size: A4; margin: 18mm 16mm; }
+  @page { size: A4; margin: 20mm 18mm; }
 
   :root {
-    --tinta: #1c1c1e;
-    --suave: #6b6b70;
-    --linea: #d8d8dd;
+    --tinta: #1b1a1f;
+    --suave: #6e6c76;
+    --linea: #dcd9e2;
     --acento: #5b1a8a;
+    --acento-claro: #f4eefb;
+    --oro: #f5b800;
   }
 
   * { box-sizing: border-box; }
@@ -19,51 +21,117 @@
     margin: 0;
     font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, sans-serif;
     font-size: 10.5pt;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--tinta);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  h1 {
-    font-size: 30pt;
-    letter-spacing: -0.02em;
-    margin: 0 0 4pt;
+  p { margin: 0 0 8pt; }
+  ul, ol { margin: 0 0 10pt; padding-left: 16pt; }
+  li { margin-bottom: 5pt; }
+  strong { font-weight: 600; }
+
+  /* ---------- Portada ---------- */
+
+  .portada {
+    height: 247mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    break-after: page;
   }
-  h2 {
-    font-size: 15pt;
-    margin: 26pt 0 8pt;
-    padding-bottom: 4pt;
+  .portada img.icono {
+    width: 34mm;
+    border-radius: 8mm;
+    margin: 0 auto 14mm;
+  }
+  .portada h1 {
+    font-size: 38pt;
+    letter-spacing: -0.025em;
+    margin: 0;
+    color: var(--acento);
+  }
+  .portada .lema {
+    font-size: 13pt;
+    color: var(--suave);
+    margin: 3mm 0 0;
+  }
+  .portada .clase {
+    font-size: 11pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 12mm 0 0;
+  }
+  .portada .entradilla {
+    max-width: 128mm;
+    margin: 16mm auto 0;
+    padding: 6mm 7mm;
+    background: var(--acento-claro);
+    border-left: 3px solid var(--acento);
+    text-align: left;
+    color: #37323c;
+  }
+  .portada .sello {
+    margin-top: 18mm;
+    font-size: 9pt;
+    color: var(--suave);
+  }
+
+  /* ---------- Contenido ---------- */
+
+  .indice { break-after: page; }
+  .indice h2 { margin-top: 0; }
+  .indice ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: seccion;
+  }
+  .indice li {
+    counter-increment: seccion;
+    padding: 6pt 0;
     border-bottom: 1px solid var(--linea);
-    break-after: avoid;
+    font-size: 11pt;
   }
-  h3 {
-    font-size: 12pt;
-    margin: 16pt 0 4pt;
+  .indice li::before {
+    content: counter(seccion);
+    display: inline-block;
+    width: 9mm;
+    color: var(--acento);
+    font-weight: 600;
+  }
+  .indice li span { color: var(--suave); font-size: 9.5pt; }
+
+  /* ---------- Secciones ---------- */
+
+  h2 {
+    font-size: 17pt;
+    letter-spacing: -0.01em;
+    margin: 0 0 10pt;
+    padding-bottom: 5pt;
+    border-bottom: 2px solid var(--acento);
     color: var(--acento);
     break-after: avoid;
   }
-
-  .entradilla {
+  h3 {
     font-size: 11.5pt;
-    color: var(--suave);
-    margin: 0 0 6pt;
+    margin: 14pt 0 5pt;
+    break-after: avoid;
   }
-
-  p { margin: 0 0 8pt; }
-  ul, ol { margin: 0 0 8pt; padding-left: 18pt; }
-  li { margin-bottom: 4pt; }
-
-  strong { font-weight: 600; }
-
-  .nota {
-    border-left: 3px solid var(--acento);
-    background: #f6f2fa;
-    padding: 8pt 10pt;
-    margin: 10pt 0;
-    color: #37323c;
-    break-inside: avoid;
+  h3::before {
+    content: "";
+    display: inline-block;
+    width: 3mm;
+    height: 3mm;
+    margin-right: 2.5mm;
+    border-radius: 1mm;
+    background: var(--oro);
   }
+  section { break-before: page; }
+
+  /* ---------- Figuras ---------- */
 
   figure {
     margin: 12pt 0;
@@ -72,287 +140,382 @@
   }
   figure img {
     border: 1px solid var(--linea);
-    border-radius: 10px;
+    border-radius: 3mm;
   }
-  figure.movil img { width: 62mm; }
-  figure.ancha img { width: 150mm; }
+  figure.movil img { width: 58mm; }
+  figure.ancha img { width: 140mm; }
+  figure.foto img { width: 140mm; border-radius: 2mm; }
   figcaption {
     font-size: 8.5pt;
     color: var(--suave);
-    margin-top: 4pt;
+    margin: 5pt auto 0;
+    max-width: 140mm;
+  }
+  .pareja {
+    display: flex;
+    gap: 8mm;
+    justify-content: center;
+    align-items: flex-start;
+    break-inside: avoid;
+    margin: 12pt 0;
+  }
+  .pareja figure { margin: 0; }
+
+  /* ---------- Avisos y tabla ---------- */
+
+  .nota {
+    border-left: 3px solid var(--oro);
+    background: #fdf7e6;
+    padding: 7pt 10pt;
+    margin: 10pt 0;
+    color: #4a3f22;
+    break-inside: avoid;
   }
 
-  .pie {
-    margin-top: 24pt;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10pt 0;
+    font-size: 10pt;
+  }
+  th, td {
+    text-align: left;
+    padding: 6pt 8pt;
+    border-bottom: 1px solid var(--linea);
+    vertical-align: top;
+  }
+  th {
+    background: var(--acento-claro);
+    color: var(--acento);
+    font-weight: 600;
+  }
+  td:first-child { width: 44%; font-weight: 600; }
+  tr { break-inside: avoid; }
+
+  .cierre {
+    margin-top: 18pt;
     padding-top: 8pt;
     border-top: 1px solid var(--linea);
     font-size: 8.5pt;
     color: var(--suave);
   }
-
-  .portada { margin-bottom: 18pt; }
 </style>
 </head>
 <body>
 
-<header class="portada">
+<!-- ============ PORTADA ============ -->
+
+<div class="portada">
+  <img class="icono" src="icono.png" alt="Icono de Banner">
   <h1>Banner</h1>
-  <p class="entradilla">Manual de uso</p>
-</header>
+  <p class="lema">Rótulo luminoso para iPhone y iPad</p>
+  <p class="clase">Manual de uso</p>
 
-<p>Banner convierte la pantalla del iPhone o del iPad en un rótulo luminoso:
-escribes un mensaje, eliges cómo se ve y cómo se mueve, y el texto desfila a
-pantalla completa en apaisado. Sirve para recibir a alguien en un aeropuerto,
-animar en una carrera, felicitar un cumpleaños o llamar la atención en un
-concierto.</p>
+  <div class="entradilla">
+    Escribe un mensaje, dale color, tipografía y movimiento, y la pantalla se
+    convierte en un rótulo que desfila en apaisado. Este manual recorre la app
+    pantalla por pantalla: cómo se prepara el mensaje, cómo se controla el rótulo
+    mientras corre, cómo se guardan mensajes para reutilizarlos y cómo se proyecta
+    en un televisor.
+  </div>
 
-<p>La app tiene dos pantallas: la de <strong>ajustes</strong>, donde se prepara
-todo, y el <strong>rótulo</strong> a pantalla completa. Todo lo que configures se
-conserva al cerrar la app.</p>
+  <p class="sello">Versión 1.0 · Agosto de 2026</p>
+</div>
 
-<h2>1. La pantalla de ajustes</h2>
+<!-- ============ CONTENIDO ============ -->
 
-<p>Se recorre de arriba abajo. Cada bloque cambia una cosa y el resultado se ve al
-momento en la <strong>vista previa</strong> —el rectángulo con el fondo y los
-colores reales que hay bajo <em>Tipografía</em>—.</p>
+<div class="indice">
+  <h2>Contenido</h2>
+  <ol>
+    <li>La pantalla de ajustes <span>— mensaje, tipografía, colores, trayectoria, velocidad, tamaño, destellos e idioma</span></li>
+    <li>El rótulo en marcha <span>— apaisado, barra de control y salida</span></li>
+    <li>Mensajes guardados <span>— guardar, cargar y borrar</span></li>
+    <li>Proyectar en un televisor o un monitor <span>— AirPlay y cable</span></li>
+    <li>Detalles que conviene saber <span>— contraste, emoticonos, colores y batería</span></li>
+    <li>Resumen de gestos y controles</li>
+  </ol>
+</div>
 
-<figure class="movil">
-  <img src="ajustes-mensaje.png" alt="Pantalla de ajustes">
-  <figcaption>Mensaje, tipografía y color del texto, con la vista previa real.</figcaption>
-</figure>
+<!-- ============ 1 ============ -->
 
-<h3>Mensaje</h3>
+<section>
+  <h2>1. La pantalla de ajustes</h2>
 
-<p>El campo de texto admite cualquier cosa, emoticonos incluidos. Puede ocupar
-varias líneas mientras lo escribes; en el rótulo saldrá todo seguido en una sola.</p>
+  <p>Es donde se prepara todo. Se recorre de arriba abajo y cada bloque cambia una
+  cosa; el resultado se ve al momento en la <strong>vista previa</strong>, el
+  rectángulo con el fondo y los colores reales que hay bajo <em>Tipografía</em>.</p>
 
-<p><strong>Dar formato a un trozo del mensaje.</strong> Selecciona el texto —toca
-dos veces una palabra, o toca y elige <em>Seleccionar</em>— y tienes dos caminos:</p>
+  <figure class="movil">
+    <img src="ajustes-mensaje.png" alt="Pantalla de ajustes">
+    <figcaption>Mensaje, tipografía y color del texto. La vista previa muestra el
+    aspecto exacto que tendrá el rótulo.</figcaption>
+  </figure>
 
-<ul>
-  <li>En el menú que aparece sobre la selección, <strong>Formato</strong>:
-      <em>Negrita</em>, <em>Cursiva</em>, <em>Subrayado</em>. Si no lo ves
-      directamente, toca antes la flecha <strong>›</strong>.</li>
-  <li>En la barra que sale <strong>sobre el teclado</strong>: <strong>B</strong>
-      (negrita), <em>I</em> (cursiva), <strong>U</strong> (subrayado), la
-      <strong>paleta</strong> (color del trozo seleccionado) y la
-      <strong>brocha</strong> (le quita el color propio y lo devuelve al color
-      general).</li>
-</ul>
+  <h3>Mensaje</h3>
 
-<figure class="movil">
-  <img src="formato.png" alt="Menú Formato">
-  <figcaption>El menú <em>Formato</em> sobre el texto seleccionado.</figcaption>
-</figure>
+  <p>El campo admite cualquier texto, emoticonos incluidos. Puede ocupar varias
+  líneas mientras escribes; en el rótulo saldrá todo seguido en una sola.</p>
 
-<p>Así puedes tener <strong>varios colores en un mismo mensaje</strong>: en el
-ejemplo, «HOLA! FELIZ» en verde y «CUMPLE» en amarillo. El botón
-<strong>Hecho</strong> de esa misma barra cierra el teclado.</p>
+  <p><strong>Para dar formato a un trozo</strong>, selecciónalo —toca dos veces una
+  palabra, o toca y elige <em>Seleccionar</em>— y usa cualquiera de los dos caminos:</p>
 
-<div class="nota">La negrita se nota poco: el rótulo ya se dibuja con un trazo muy
-grueso, y la negrita sube al más grueso disponible. La cursiva y el color se ven
-mucho más.</div>
+  <ul>
+    <li>El menú que aparece sobre la selección: <strong>Formato</strong> →
+        <em>Negrita</em>, <em>Cursiva</em>, <em>Subrayado</em>. Si no lo ves,
+        toca antes la flecha <strong>›</strong>.</li>
+    <li>La barra que sale <strong>sobre el teclado</strong>: <strong>B</strong>,
+        <em>I</em> y <strong>U</strong> para los mismos rasgos, la
+        <strong>paleta</strong> para dar color al trozo seleccionado y la
+        <strong>brocha</strong> para quitárselo y devolverlo al color general.
+        <strong>Hecho</strong> cierra el teclado.</li>
+  </ul>
 
-<h3>Tipografía</h3>
+  <figure class="movil">
+    <img src="formato.png" alt="Menú Formato sobre el texto seleccionado">
+    <figcaption>El menú <em>Formato</em> con «CUMPLE» seleccionado. Abajo, la barra
+    del teclado con la paleta de color.</figcaption>
+  </figure>
 
-<p>Un menú con catorce tipos: cuatro del sistema (<em>Redondeada</em>,
-<em>Sistema</em>, <em>Con remates</em>, <em>Monoespaciada</em>) y diez familias
-clásicas de iOS — Avenir Next, Futura, Georgia, Helvetica Neue, American
-Typewriter, Copperplate, Chalkboard, Marker Felt, Snell Roundhand y Party.
-Debajo, la vista previa con el aspecto real.</p>
+  <p>Combinando ambas cosas se consiguen <strong>varios colores en un mismo
+  mensaje</strong>: en el ejemplo, «HOLA! FELIZ» en verde y «CUMPLE» en amarillo.</p>
 
-<h3>Color del texto</h3>
+  <div class="nota"><strong>La negrita se nota poco.</strong> El rótulo ya se dibuja
+  con un trazo muy grueso y la negrita solo puede subir al más grueso disponible.
+  La cursiva y el color, en cambio, se ven a distancia.</div>
 
-<p>Tres deslizadores: <strong>Tono</strong>, <strong>Saturación</strong> y
-<strong>Brillo</strong>. Es el color de todo el mensaje salvo los trozos a los que
-hayas dado un color propio, que mandan sobre este.</p>
+  <h3>Tipografía</h3>
 
-<h3>Fondo</h3>
+  <p>Catorce tipos: cuatro del sistema —<em>Redondeada</em>, <em>Sistema</em>,
+  <em>Con remates</em> y <em>Monoespaciada</em>— y diez familias clásicas de iOS:
+  Avenir Next, Futura, Georgia, Helvetica Neue, American Typewriter, Copperplate,
+  Chalkboard, Marker Felt, Snell Roundhand y Party.</p>
 
-<p>Los mismos tres deslizadores para el fondo del rótulo. El primero es el
-<strong>Brillo</strong> porque es el que saca el fondo del negro: con el brillo a
-cero el fondo es negro, que es como viene de fábrica y lo que más contrasta.</p>
+  <h3>Color del texto y Fondo</h3>
 
-<h3>Trayectoria</h3>
+  <p>Dos bloques con los mismos tres deslizadores: <strong>Tono</strong>,
+  <strong>Saturación</strong> y <strong>Brillo</strong>. El color del texto se aplica
+  a todo el mensaje salvo a los trozos que tengan color propio, que mandan sobre él.</p>
 
-<p>Aquí se decide si las letras van rectas o suben y bajan.</p>
+  <p>En el fondo, el primer deslizador es el <strong>Brillo</strong> porque es el que
+  lo saca del negro: a cero el fondo es negro, que es como viene de fábrica y lo que
+  más contrasta.</p>
 
-<ol>
-  <li>Toca <strong>Dibujar trayectoria</strong>.</li>
-  <li>En el recuadro, dibuja el recorrido <strong>con el dedo, de izquierda a
-      derecha</strong>, como si firmaras. La línea de puntos marca el centro de la
-      pantalla.</li>
-  <li>O usa uno de los atajos: <strong>Onda</strong>, <strong>Sierra</strong> o
-      <strong>Recta</strong>.</li>
-  <li><strong>Usar</strong> lo aplica; <strong>Cancelar</strong> lo descarta.</li>
-</ol>
+  <h3>Trayectoria</h3>
 
-<figure class="movil">
-  <img src="trayectoria.png" alt="Lienzo de la trayectoria">
-  <figcaption>Un diente de sierra dibujado a mano en el lienzo.</figcaption>
-</figure>
+  <p>Decide si las letras van rectas o suben y bajan mientras cruzan la pantalla.</p>
 
-<p>Las letras suben y bajan siguiendo ese trazo mientras cruzan la pantalla, cada
-una a su turno. El dibujo <strong>se repite</strong> a lo largo del recorrido, así
-que un diente de sierra encadena sin saltos hasta que el mensaje termina de pasar.
-El botón <strong>Recta</strong>, junto al de dibujar, quita la trayectoria.</p>
+  <ol>
+    <li>Toca <strong>Dibujar trayectoria</strong>.</li>
+    <li>Dibuja el recorrido en el recuadro <strong>con el dedo, de izquierda a
+        derecha</strong>, como si firmaras. La línea de puntos marca el centro de la
+        pantalla.</li>
+    <li>O elige un atajo: <strong>Onda</strong>, <strong>Sierra</strong> o
+        <strong>Recta</strong>.</li>
+    <li><strong>Usar</strong> lo aplica; <strong>Cancelar</strong> lo descarta.</li>
+  </ol>
 
-<figure class="movil">
-  <img src="ajustes-trayectoria.png" alt="Trayectoria, velocidad, tamaño, destellos e idioma">
-  <figcaption>La trayectoria aplicada, y debajo velocidad, tamaño, destellos e idioma.</figcaption>
-</figure>
+  <div class="pareja">
+    <figure class="movil">
+      <img src="trayectoria.png" alt="Lienzo de la trayectoria">
+      <figcaption>Un diente de sierra dibujado a mano.</figcaption>
+    </figure>
+    <figure class="movil">
+      <img src="ajustes-trayectoria.png" alt="Trayectoria aplicada">
+      <figcaption>Ya aplicado, sobre el fondo real.</figcaption>
+    </figure>
+  </div>
 
-<div class="nota">Si quieres subidas y bajadas más amplias, baja el deslizador de
-<strong>Tamaño</strong>: la trayectoria se ajusta a la altura libre para que las
-letras no se salgan de la pantalla, de modo que cuanto más pequeño el texto, más
-recorrido vertical.</div>
+  <p>Cada letra sigue el trazo a su turno, y el dibujo <strong>se repite</strong> a lo
+  largo del recorrido: un diente de sierra encadena sin saltos hasta que el mensaje
+  termina de pasar. El botón <strong>Recta</strong>, junto al de dibujar, lo quita.</p>
 
-<h3>Velocidad</h3>
+  <div class="nota">Para subidas y bajadas más amplias, baja el deslizador de
+  <strong>Tamaño</strong>: la trayectoria se ajusta a la altura libre para que las
+  letras no se salgan, así que cuanto más pequeño el texto, más recorrido vertical.</div>
 
-<p>De muy lenta (tortuga) a muy rápida (liebre). También se puede cambiar con el
-rótulo en marcha, sin volver aquí.</p>
+  <h3>Velocidad y Tamaño</h3>
 
-<h3>Tamaño</h3>
+  <p>La <strong>velocidad</strong> va de la tortuga a la liebre y también se puede
+  cambiar con el rótulo en marcha. El <strong>tamaño</strong> es la proporción de la
+  altura de pantalla que ocupan las letras: el texto siempre recorre toda la anchura,
+  esto solo cambia lo altas que son.</p>
 
-<p>Qué proporción de la altura de la pantalla ocupan las letras. El texto siempre
-recorre <strong>toda la anchura</strong>; esto solo cambia lo altas que son.</p>
+  <h3>Destellos</h3>
 
-<h3>Destellos</h3>
+  <p>El fondo parpadea en el color del texto para llamar la atención, y el texto se
+  invierte al color del fondo para seguir leyéndose. El deslizador ajusta la
+  <strong>frecuencia</strong>.</p>
 
-<p>El fondo parpadea en el color del texto para llamar la atención, y el texto se
-invierte al color del fondo para seguir leyéndose. Aquí se ajusta la
-<strong>frecuencia</strong> del parpadeo.</p>
+  <p>Se encienden y se apagan con <strong>los botones de volumen</strong> mientras el
+  rótulo está en pantalla, sin tocar nada: cada pulsación los conmuta y el teléfono
+  responde con una vibración corta. Empiezan siempre apagados.</p>
 
-<p>Los destellos <strong>se encienden y se apagan con los botones de
-volumen</strong> mientras el rótulo está en pantalla, sin tocar nada: cada
-pulsación los conmuta y el teléfono responde con una pequeña vibración de
-confirmación. Empiezan siempre apagados.</p>
+  <h3>Idioma</h3>
 
-<h3>Idioma</h3>
+  <p>Español, inglés, catalán o <strong>Automático</strong>, que sigue al idioma del
+  iPhone. El cambio es inmediato: no hace falta reiniciar la app ni pasar por los
+  Ajustes del sistema.</p>
+</section>
 
-<p>Español, inglés, catalán o <strong>Automático</strong>, que sigue al idioma del
-iPhone. El cambio es inmediato: no hace falta reiniciar la app ni pasar por los
-Ajustes del sistema.</p>
+<!-- ============ 2 ============ -->
 
-<h3>Mostrar rótulo</h3>
+<section>
+  <h2>2. El rótulo en marcha</h2>
 
-<p>El botón grande del final abre el rótulo a pantalla completa.</p>
+  <p>El botón <strong>Mostrar rótulo</strong>, al final de los ajustes, lo abre a
+  pantalla completa. La pantalla <strong>gira sola a apaisado</strong> —da igual cómo
+  sujetes el teléfono—, desaparece la barra de estado y la pantalla <strong>no se
+  apaga</strong> mientras dure.</p>
 
-<h2>2. El rótulo en marcha</h2>
+  <figure class="ancha">
+    <img src="rotulo.png" alt="El rótulo desfilando">
+    <figcaption>Las letras montadas sobre el diente de sierra, cada una a la altura
+    que le toca; los colores por tramos se conservan.</figcaption>
+  </figure>
 
-<p>Al abrirlo, la pantalla <strong>gira sola a apaisado</strong> —da igual cómo
-sujetes el teléfono—, desaparece la barra de estado y la pantalla <strong>no se
-apaga</strong> mientras dure.</p>
+  <p>Durante los primeros segundos aparece abajo un recordatorio: <em>«Toca la
+  pantalla para volver a los ajustes · Volumen: destellos»</em>.</p>
 
-<figure class="ancha">
-  <img src="rotulo.png" alt="El rótulo desfilando">
-  <figcaption>Las letras montadas sobre el diente de sierra, cada una a su altura.</figcaption>
-</figure>
+  <figure class="ancha">
+    <img src="barra-controles.png" alt="Barra de control del rótulo">
+    <figcaption>Un toque en la pantalla muestra la barra, que se oculta sola a los
+    diez segundos.</figcaption>
+  </figure>
 
-<p>Durante los primeros segundos aparece abajo un recordatorio: <em>«Toca la
-pantalla para volver a los ajustes · Volumen: destellos»</em>.</p>
+  <ul>
+    <li><strong>Ajustes</strong> vuelve a la pantalla de configuración.</li>
+    <li>El <strong>deslizador</strong> cambia la velocidad; se aplica al soltarlo,
+        para que el texto no vuelva al principio en cada valor intermedio.</li>
+    <li>El <strong>rayo</strong> enciende o apaga los destellos, lo mismo que los
+        botones de volumen.</li>
+    <li><strong>Deslizar el dedo</strong> hacia arriba o hacia abajo también vuelve a
+        los ajustes.</li>
+  </ul>
+</section>
 
-<ul>
-  <li><strong>Un toque</strong> en la pantalla muestra la barra de control, que se
-      oculta sola a los diez segundos.</li>
-  <li><strong>Deslizar el dedo</strong> hacia arriba o hacia abajo también vuelve a
-      los ajustes.</li>
-  <li><strong>Los botones de volumen</strong> conmutan los destellos en cualquier
-      momento.</li>
-</ul>
+<!-- ============ 3 ============ -->
 
-<figure class="ancha">
-  <img src="barra-controles.png" alt="Barra de control del rótulo">
-  <figcaption><strong>Ajustes</strong> vuelve a la configuración, el deslizador
-  cambia la velocidad —se aplica al soltarlo— y el rayo enciende o apaga los
-  destellos.</figcaption>
-</figure>
+<section>
+  <h2>3. Mensajes guardados</h2>
 
-<h2>3. Mensajes guardados</h2>
+  <p>Arriba a la derecha de los ajustes hay dos botones:</p>
 
-<p>Arriba a la derecha hay dos botones:</p>
+  <ul>
+    <li><strong>Guardar</strong> (la flecha hacia abajo) conserva el mensaje actual
+        <strong>con todo</strong>: texto y formato, tipografía, colores, fondo,
+        trayectoria, velocidad, tamaño y frecuencia de destello. El teléfono vibra al
+        guardarlo.</li>
+    <li><strong>Biblioteca</strong> (la pila de tarjetas) abre <em>Mensajes
+        guardados</em>.</li>
+  </ul>
 
-<ul>
-  <li><strong>Guardar</strong> (la flecha hacia abajo): conserva el mensaje actual
-      <strong>con todo</strong> —texto y formato, tipografía, colores, fondo,
-      trayectoria, velocidad, tamaño y frecuencia de destello—. El teléfono vibra al
-      guardarlo.</li>
-  <li><strong>Biblioteca</strong> (la pila de tarjetas): abre <em>Mensajes
-      guardados</em>.</li>
-</ul>
+  <figure class="movil">
+    <img src="biblioteca.png" alt="Biblioteca de mensajes guardados">
+    <figcaption>Cada tarjeta reproduce el aspecto real del rótulo, con la tipografía y
+    la fecha debajo.</figcaption>
+  </figure>
 
-<figure class="movil">
-  <img src="biblioteca.png" alt="Biblioteca de mensajes guardados">
-  <figcaption>Cada tarjeta reproduce el aspecto real del rótulo.</figcaption>
-</figure>
+  <ul>
+    <li><strong>Toca una tarjeta</strong> para cargar ese mensaje con todas sus
+        características y volver a los ajustes.</li>
+    <li><strong>Mantén el dedo</strong> sobre ella y elige <em>Eliminar</em> para
+        borrarla.</li>
+  </ul>
+</section>
 
-<ul>
-  <li><strong>Tócala</strong> para cargar ese mensaje con todas sus características
-      y volver a los ajustes.</li>
-  <li><strong>Mantén el dedo</strong> sobre ella y elige <em>Eliminar</em> para
-      borrarla.</li>
-</ul>
+<!-- ============ 4 ============ -->
 
-<h2>4. Proyectar en un televisor o un monitor</h2>
+<section>
+  <h2>4. Proyectar en un televisor o un monitor</h2>
 
-<p>El rótulo puede verse en una pantalla grande mientras el iPhone se queda con
-los ajustes: lo que cambies allí se ve al instante en la pantalla grande.
-<strong>No es un duplicado</strong>, es la app dibujando a pantalla completa en el
-televisor.</p>
+  <p>El rótulo puede verse en una pantalla grande mientras el iPhone se queda con los
+  ajustes: lo que cambies allí aparece al instante en la pantalla grande. <strong>No
+  es un duplicado</strong> de la pantalla del teléfono, es la app dibujando a pantalla
+  completa en el televisor.</p>
 
+  <figure class="foto">
+    <img src="proyeccion-tv.jpg" alt="El rótulo proyectado en un televisor">
+    <figcaption>El rótulo en un televisor por AirPlay: las letras conservan su color y
+    su formato, y ocupan toda la pantalla.</figcaption>
+  </figure>
 
+  <h3>Por AirPlay (Apple TV o televisor compatible)</h3>
 
-<p><strong>Por AirPlay (Apple TV o televisor compatible)</strong></p>
+  <ol>
+    <li>iPhone y televisor en la misma red Wi-Fi.</li>
+    <li>Abre el <strong>Centro de control</strong> deslizando desde la esquina
+        superior derecha.</li>
+    <li>Toca <strong>Duplicar pantalla</strong> y elige el televisor.</li>
+  </ol>
 
-<ol>
-  <li>iPhone y televisor en la misma red Wi-Fi.</li>
-  <li>Abre el <strong>Centro de control</strong> (desliza desde la esquina superior
-      derecha).</li>
-  <li>Toca <strong>Duplicar pantalla</strong> y elige el televisor.</li>
-</ol>
+  <div class="nota"><strong>¿No encuentras «Duplicar pantalla»?</strong> En iOS 26 no
+  viene en la primera página del Centro de control. Toca el <strong>+</strong> de la
+  esquina superior derecha, entra en <strong>Añadir un control</strong>, busca
+  «Duplicar pantalla» y colócalo donde quieras.</div>
 
-<p>En iOS 26 ese control no viene en la primera página. Si no lo encuentras: en el
-Centro de control, toca el <strong>+</strong> de la esquina superior derecha,
-<strong>Añadir un control</strong>, busca «Duplicar pantalla» y colócalo.</p>
+  <h3>Por cable</h3>
 
-<p><strong>Por cable</strong></p>
+  <ul>
+    <li>iPhone 15 o posterior: adaptador USB-C → HDMI.</li>
+    <li>iPhone anterior: adaptador Lightning Digital AV.</li>
+    <li>iPad: USB-C directo al monitor o al televisor.</li>
+  </ul>
 
-<ul>
-  <li>iPhone 15 o posterior: adaptador USB-C → HDMI.</li>
-  <li>iPhone anterior: adaptador Lightning Digital AV.</li>
-  <li>iPad: USB-C directo al monitor o al televisor.</li>
-</ul>
+  <p>En los dos casos la app tiene que estar <strong>abierta y en primer plano</strong>
+  al conectar; si la mandas al fondo, el televisor pasa a duplicar lo que haya en
+  pantalla. Mientras dure la proyección, en los ajustes aparece arriba el aviso
+  <em>«Proyectando en una pantalla externa»</em>.</p>
 
-<p>La app tiene que estar <strong>abierta y en primer plano</strong> al conectar; si
-la mandas al fondo, el televisor pasa a duplicar lo que haya en pantalla. Mientras
-dure la proyección, en los ajustes aparece arriba el aviso <em>«Proyectando en una
-pantalla externa»</em>.</p>
+  <div class="nota">Un iPad puede <em>emitir</em> hacia un televisor, pero no sirve
+  como pantalla externa de un iPhone.</div>
+</section>
 
-<div class="nota">Un iPad puede <em>emitir</em>, pero no sirve como pantalla
-externa de un iPhone.</div>
+<!-- ============ 5 ============ -->
 
-<h2>5. Detalles que conviene saber</h2>
+<section>
+  <h2>5. Detalles que conviene saber</h2>
 
-<ul>
-  <li><strong>Contraste</strong>: la vista previa usa el fondo real, así que si un
-      color no se lee ahí, tampoco se leerá en el rótulo.</li>
-  <li><strong>Emoticonos</strong>: se dibujan siempre con sus colores; el color del
-      texto no les afecta.</li>
-  <li><strong>Negro y blanco desde el panel del sistema</strong>: si eliges uno de
-      esos dos colores desde <em>Formato → Más…</em>, ese trozo seguirá al
-      <em>Color del texto</em> general, porque no hay forma de distinguirlos del
-      color con el que escribe el editor. Con la <strong>paleta</strong> de la barra
-      del teclado sí funcionan.</li>
-  <li><strong>Batería</strong>: el rótulo mantiene la pantalla encendida a
-      propósito. Para tiradas largas, mejor con el teléfono enchufado.</li>
-</ul>
+  <ul>
+    <li><strong>Contraste.</strong> La vista previa usa el fondo real: si un color no
+        se lee ahí, tampoco se leerá en el rótulo.</li>
+    <li><strong>Emoticonos.</strong> Se dibujan siempre con sus colores; el color del
+        texto no les afecta.</li>
+    <li><strong>Negro y blanco desde el panel del sistema.</strong> Si eliges uno de
+        esos dos colores en <em>Formato → Más…</em>, ese trozo seguirá al <em>Color
+        del texto</em> general, porque no hay forma de distinguirlos del color con el
+        que escribe el editor. Con la <strong>paleta</strong> de la barra del teclado
+        sí funcionan.</li>
+    <li><strong>Batería.</strong> El rótulo mantiene la pantalla encendida a
+        propósito. Para tiradas largas, mejor con el teléfono enchufado.</li>
+    <li><strong>Requisitos.</strong> iPhone o iPad con iOS 17 o posterior.</li>
+  </ul>
+</section>
 
-<h2>6. Requisitos</h2>
+<!-- ============ 6 ============ -->
 
-<p>iPhone o iPad con <strong>iOS 17 o posterior</strong>. La proyección en pantalla
-externa funciona por AirPlay o por cable.</p>
+<section>
+  <h2>6. Resumen de gestos y controles</h2>
 
-<p class="pie">Las capturas de este manual están tomadas del simulador de iOS.</p>
+  <table>
+    <tr><th>Quiero…</th><th>Cómo</th></tr>
+    <tr><td>Poner en negrita, cursiva o subrayado</td><td>Selecciona el trozo → <em>Formato</em> en el menú, o B / I / U en la barra del teclado</td></tr>
+    <tr><td>Pintar un trozo de otro color</td><td>Selecciónalo y toca la paleta de la barra del teclado</td></tr>
+    <tr><td>Quitarle el color a un trozo</td><td>Selecciónalo y toca la brocha</td></tr>
+    <tr><td>Que las letras suban y bajen</td><td>Trayectoria → <em>Dibujar trayectoria</em> → dibuja, o elige Onda o Sierra</td></tr>
+    <tr><td>Volver a las letras rectas</td><td>Trayectoria → <em>Recta</em></td></tr>
+    <tr><td>Abrir el rótulo</td><td>Botón <em>Mostrar rótulo</em>, al final de los ajustes</td></tr>
+    <tr><td>Ver los controles con el rótulo en marcha</td><td>Un toque en la pantalla</td></tr>
+    <tr><td>Volver a los ajustes</td><td>Botón <em>Ajustes</em> de la barra, o desliza arriba o abajo</td></tr>
+    <tr><td>Encender o apagar los destellos</td><td>Cualquier botón de volumen, o el rayo de la barra</td></tr>
+    <tr><td>Guardar el mensaje con todo</td><td>Botón de la flecha, arriba a la derecha</td></tr>
+    <tr><td>Recuperar un mensaje guardado</td><td>Botón de la pila → toca su tarjeta</td></tr>
+    <tr><td>Borrar un mensaje guardado</td><td>Mantén el dedo sobre la tarjeta → <em>Eliminar</em></td></tr>
+    <tr><td>Verlo en el televisor</td><td>Centro de control → <em>Duplicar pantalla</em>, con la app abierta</td></tr>
+  </table>
+
+  <p class="cierre">Banner · Manual de uso · Las capturas de la app están tomadas del
+  simulador de iOS; la de la proyección, de un televisor real.</p>
+</section>
 
 </body>
 </html>
