@@ -51,7 +51,10 @@ enum BannerText {
         let whole = NSRange(location: 0, length: result.length)
         guard whole.length > 0 else { return result }
 
-        result.enumerateAttributes(in: whole, options: []) { attributes, range, _ in
+        // Se recorre el original y se escribe en la copia: al añadir atributos
+        // cambian los tramos, y enumerar el mismo texto que se está
+        // modificando descuadra el recorrido y pisa los tramos siguientes.
+        source.enumerateAttributes(in: whole, options: []) { attributes, range, _ in
             let editedFont = attributes[.font] as? UIFont
             let traits = editedFont?.fontDescriptor.symbolicTraits ?? []
             result.addAttribute(
@@ -75,13 +78,26 @@ enum BannerText {
         traits: UIFontDescriptor.SymbolicTraits
     ) -> UIFont {
         let base = typeface.uiFont(size: size, bold: traits.contains(.traitBold))
-        guard traits.contains(.traitItalic),
-              let descriptor = base.fontDescriptor.withSymbolicTraits(
-                  base.fontDescriptor.symbolicTraits.union(.traitItalic)
-              )
-        else { return base }
-        return UIFont(descriptor: descriptor, size: size)
+        guard traits.contains(.traitItalic) else { return base }
+
+        if let descriptor = base.fontDescriptor.withSymbolicTraits(
+            base.fontDescriptor.symbolicTraits.union(.traitItalic)
+        ) {
+            let italic = UIFont(descriptor: descriptor, size: size)
+            // Si la familia no tiene corte cursivo, el sistema devuelve el
+            // mismo tipo sin avisar; se detecta comparando el nombre.
+            if italic.fontName != base.fontName { return italic }
+        }
+
+        // Inclinación sintética para las familias sin cursiva propia, como
+        // San Francisco Rounded, que es la tipografía por omisión del rótulo.
+        let slant = CGAffineTransform(a: 1, b: 0, c: obliqueSlant, d: 1, tx: 0, ty: 0)
+        return UIFont(descriptor: base.fontDescriptor.withMatrix(slant), size: size)
     }
+
+    /// Inclinación de la cursiva sintética: 12°, la pendiente habitual de las
+    /// cursivas de palo seco.
+    private static let obliqueSlant = CGFloat(tan(12 * Double.pi / 180))
 
     // MARK: - Persistencia
 
