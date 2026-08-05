@@ -997,6 +997,52 @@
         }
       }
     },
+    "settings.speed.video": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vídeo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vídeo"
+          }
+        }
+      }
+    },
+    "settings.speed.video.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El vídeo s'exporta més ràpid que el rètol a la pantalla: està pensat per compartir-lo, no per mirar-lo d'una tirada."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The video is exported faster than the banner on screen: it is meant to be shared, not watched in place."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El vídeo se exporta más rápido que el rótulo en pantalla: está pensado para compartirlo, no para verlo del tirón."
+          }
+        }
+      }
+    },
     "settings.text.bold": {
       "extractionState": "manual",
       "localizations": {

@@ -63,6 +63,16 @@ final class BannerSettings {
     /// Velocidad de desplazamiento en puntos por segundo.
     var speed: Double { didSet { save(speed, for: .speed) } }
 
+    /// Cuántas veces más rápido va el vídeo exportado que el rótulo en pantalla.
+    ///
+    /// Son dos usos distintos: el cartel se lee en persona y conviene lento,
+    /// mientras que el vídeo se comparte y un mensaje corto tardaba casi un
+    /// minuto en cruzar. Por eso el valor por omisión es 2.
+    var videoSpeedFactor: Double { didSet { save(videoSpeedFactor, for: .videoSpeedFactor) } }
+
+    /// Multiplicadores ofrecidos para la velocidad del vídeo.
+    static let videoSpeedFactors: [Double] = [1, 2, 3, 4]
+
     /// Fracción de la altura de la pantalla que ocupa el texto, en el rango 0...1.
     var heightFraction: Double { didSet { save(heightFraction, for: .heightFraction) } }
 
@@ -136,6 +146,8 @@ final class BannerSettings {
         saturation = defaults.value(forKey: Key.saturation.rawValue) as? Double ?? 1.0
         brightness = defaults.value(forKey: Key.brightness.rawValue) as? Double ?? 1.0
         ledEnabled = defaults.bool(forKey: Key.ledEnabled.rawValue)
+        let factor = defaults.double(forKey: Key.videoSpeedFactor.rawValue)
+        videoSpeedFactor = factor > 0 ? factor : 2
         path = defaults.data(forKey: Key.path.rawValue)
             .flatMap { try? JSONDecoder().decode(BannerPath.self, from: $0) } ?? .straight
         backgroundHue = defaults.value(forKey: Key.backgroundHue.rawValue) as? Double ?? 0
@@ -153,7 +165,7 @@ final class BannerSettings {
         case text, richText, typeface, language, hue, saturation, brightness
         case backgroundHue, backgroundSaturation, backgroundBrightness
         case speed, heightFraction, flashRate, path
-        case ledEnabled
+        case ledEnabled, videoSpeedFactor
     }
 
     private func save(_ value: Any, for key: Key) {

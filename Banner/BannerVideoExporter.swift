@@ -77,7 +77,8 @@ enum BannerVideoExporter {
                              pitch: LEDRenderer.pitch(forFontSize: fontSize),
                              altoLinea: altoLinea)
         let recorrido = anchoTexto + size.width
-        let velocidad = max(settings.speed, 1)
+        // El vídeo va más rápido que el rótulo: se comparte, no se contempla.
+        let velocidad = max(settings.speed * settings.videoSpeedFactor, 1)
         // Una pasada completa, más lo que tarda la última letra en salir.
         let segundos = (recorrido + anchoTexto) / velocidad
         let total = Int(ceil(segundos * Double(fps)))

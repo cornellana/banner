@@ -302,15 +302,28 @@ struct ContentView: View {
     }
 
     private var speedSection: some View {
-        SettingsCard(title: "settings.speed.header") {
-            IconSlider(
-                value: $settings.speed,
-                range: BannerSettings.speedRange,
-                minimumIcon: "tortoise.fill",
-                maximumIcon: "hare.fill",
-                accessibilityLabel: "settings.speed.header",
-                tint: settings.color
-            )
+        SettingsCard(title: "settings.speed.header", footer: "settings.speed.video.footer") {
+            VStack(spacing: 18) {
+                IconSlider(
+                    value: $settings.speed,
+                    range: BannerSettings.speedRange,
+                    minimumIcon: "tortoise.fill",
+                    maximumIcon: "hare.fill",
+                    accessibilityLabel: "settings.speed.header",
+                    tint: settings.color
+                )
+
+                // El vídeo se comparte y el rótulo se contempla: con la misma
+                // velocidad, un mensaje corto daba vídeos de casi un minuto.
+                Picker(selection: $settings.videoSpeedFactor) {
+                    ForEach(BannerSettings.videoSpeedFactors, id: \.self) { factor in
+                        Text(verbatim: "×\(Int(factor))").tag(factor)
+                    }
+                } label: {
+                    Label("settings.speed.video", systemImage: "film")
+                }
+                .pickerStyle(.segmented)
+            }
         }
     }
 
