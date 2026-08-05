@@ -33,14 +33,21 @@ enum LEDRenderer {
     ///   - piece: Texto con sus atributos ya resueltos (tipo, cuerpo y color).
     ///   - pitch: Separación entre centros de puntos, en puntos.
     ///   - scale: Escala de pantalla, para que los puntos salgan nítidos.
+    ///   - boxHeight: Altura de la caja donde se dibuja, normalmente la altura
+    ///     de línea del mensaje entero. Es imprescindible cuando cada letra va
+    ///     en su propia capa: si cada imagen midiera lo que ocupa su letra, al
+    ///     ajustarla a una capa de la altura de la línea se ampliaría, y los
+    ///     emoticonos —que llevan otra fuente y otras métricas— salían enormes
+    ///     al lado de las letras. Con `nil` se usa la altura del propio texto.
     /// - Returns: Imagen con la letra en puntos, o `nil` si no se pudo dibujar.
     static func image(for piece: NSAttributedString,
                       pitch: CGFloat,
-                      scale: CGFloat) -> UIImage? {
+                      scale: CGFloat,
+                      boxHeight: CGFloat? = nil) -> UIImage? {
 
         let medida = piece.size()
         let ancho = ceil(medida.width) + 2
-        let alto = ceil(medida.height) + 2
+        let alto = boxHeight.map { ceil($0) } ?? (ceil(medida.height) + 2)
         guard ancho > 1, alto > 1 else { return nil }
 
         // 1 — La letra, tal cual, en un mapa de bits que luego se lee píxel a píxel.
@@ -52,7 +59,13 @@ enum LEDRenderer {
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         else { return nil }
 
-        origen.scaleBy(x: scale, y: scale)
+        // Core Graphics tiene el origen abajo a la izquierda y el búfer se lee
+        // por filas desde arriba. Sin voltear el contexto, el texto se dibuja
+        // en un sentido y se muestrea en el otro, y las letras salen espejadas
+        // en vertical: «Buen» se veía «Bnǝu».
+        origen.translateBy(x: 0, y: CGFloat(py))
+        origen.scaleBy(x: scale, y: -scale)
+
         UIGraphicsPushContext(origen)
         piece.draw(at: .zero)
         UIGraphicsPopContext()

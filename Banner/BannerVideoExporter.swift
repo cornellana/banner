@@ -74,7 +74,8 @@ enum BannerVideoExporter {
 
         let glyphs = trocear(texto, linea: linea,
                              led: settings.ledEnabled,
-                             pitch: LEDRenderer.pitch(forFontSize: fontSize))
+                             pitch: LEDRenderer.pitch(forFontSize: fontSize),
+                             altoLinea: altoLinea)
         let recorrido = anchoTexto + size.width
         let velocidad = max(settings.speed, 1)
         // Una pasada completa, más lo que tarda la última letra en salir.
@@ -152,7 +153,9 @@ enum BannerVideoExporter {
                     if let puntos = g.dots {
                         // La imagen se ancla igual que la capa: a la izquierda y
                         // centrada en vertical sobre la trayectoria.
-                        let alto = g.dotsHeight
+                        // La imagen mide ya la altura de línea, igual que la
+                        // capa en pantalla: se dibuja a tamaño natural.
+                        let alto = altoLinea
                         let ancho = CGFloat(puntos.width) / CGFloat(puntos.height) * alto
                         ctx.draw(puntos, in: CGRect(x: x,
                                                     y: size.height - centro - alto / 2,
@@ -195,7 +198,7 @@ enum BannerVideoExporter {
     /// emoticonos ni acentos combinantes. Los espacios se descartan: no se
     /// dibujan, solo separan.
     private static func trocear(_ texto: NSAttributedString, linea: CTLine,
-                                led: Bool, pitch: CGFloat) -> [Glyph] {
+                                led: Bool, pitch: CGFloat, altoLinea: CGFloat) -> [Glyph] {
         var glyphs: [Glyph] = []
         let cadena = texto.string as NSString
         var indice = 0
@@ -208,7 +211,8 @@ enum BannerVideoExporter {
 
             // Los puntos se dibujan a escala 2: el vídeo sale a 1920 de ancho
             // y con escala 1 los bordes de cada punto quedan dentados.
-            let puntos = led ? LEDRenderer.image(for: trozo, pitch: pitch, scale: 2) : nil
+            let puntos = led ? LEDRenderer.image(for: trozo, pitch: pitch, scale: 2,
+                                                boxHeight: altoLinea) : nil
             glyphs.append(Glyph(
                 line: CTLineCreateWithAttributedString(trozo),
                 offset: CGFloat(CTLineGetOffsetForStringIndex(linea, rango.location, nil)),

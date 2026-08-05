@@ -47,7 +47,7 @@ final class MarqueeContentView: UIView {
     /// color solo repinta las capas en vez de rehacer la animación.
     private var layoutKey = ""
 
-    private var glyphLayers: [(layer: CATextLayer, range: NSRange)] = []
+    private var glyphLayers: [(layer: CALayer, range: NSRange)] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,14 +112,15 @@ final class MarqueeContentView: UIView {
     private func refreshColors() {
         for entry in glyphLayers {
             let piece = text.attributedSubstring(from: entry.range)
-            if led {
+            if let texto = entry.layer as? CATextLayer {
+                texto.string = piece
+            } else {
                 // El color va dentro de los puntos: hay que volver a dibujarlos.
                 entry.layer.contents = LEDRenderer.image(
                     for: piece,
                     pitch: ledPitch,
-                    scale: traitCollection.displayScale)?.cgImage
-            } else {
-                entry.layer.string = piece
+                    scale: traitCollection.displayScale,
+                    boxHeight: entry.layer.bounds.height)?.cgImage
             }
         }
     }
@@ -169,20 +170,30 @@ final class MarqueeContentView: UIView {
         }
     }
 
-    private func makeLayer(for piece: NSAttributedString, width: CGFloat, height: CGFloat) -> CATextLayer {
-        let layer = CATextLayer()
+    /// Capa de una letra: de texto, o de imagen cuando el rótulo va en LED.
+    ///
+    /// En modo LED **no** se usa `CATextLayer`. Esa clase dibuja su propia
+    /// cadena cada vez que se redibuja, y al hacerlo borra el `contents` que se
+    /// le hubiera puesto: la matriz de puntos desaparecía —en iPhone siempre,
+    /// en iPad según cuándo tocara redibujar—. Una `CALayer` normal se limita a
+    /// mostrar la imagen y no la toca.
+    private func makeLayer(for piece: NSAttributedString, width: CGFloat, height: CGFloat) -> CALayer {
+        let layer: CALayer
         if led, let puntos = LEDRenderer.image(for: piece,
                                                pitch: ledPitch,
-                                               scale: traitCollection.displayScale)?.cgImage {
-            // La capa sigue siendo la misma y la animación no cambia: solo se
-            // sustituye el texto por su dibujo en puntos.
+                                               scale: traitCollection.displayScale,
+                                               boxHeight: height)?.cgImage {
+            layer = CALayer()
             layer.contents = puntos
-            layer.contentsGravity = .resizeAspect
+            // La imagen ya viene con la altura de la capa: no hay que escalarla.
+            layer.contentsGravity = .topLeft
         } else {
-            layer.string = piece
+            let texto = CATextLayer()
+            texto.string = piece
+            texto.isWrapped = false
+            texto.alignmentMode = .left
+            layer = texto
         }
-        layer.isWrapped = false
-        layer.alignmentMode = .left
         layer.contentsScale = traitCollection.displayScale
         // El anclaje a la izquierda y al medio hace que `position` sea el punto
         // por el que la letra va montada sobre la trayectoria.
