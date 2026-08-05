@@ -18,6 +18,7 @@
 		46450E88E96B1C967323F99A /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DEA4B02C571CDC50CC2050 /* AppEnvironment.swift */; };
 		47484327344DBF749DB4D06D /* OrientationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB19B42625E5AA8EEBBABC4 /* OrientationController.swift */; };
 		55DFB6F28E508A7B50813284 /* RichTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833E2A1B097B29385BA0762 /* RichTextEditor.swift */; };
+		651A4F7AC4C22CF4642841C2 /* BannerVideoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD59D7C0D89F38730A72FF9 /* BannerVideoExporter.swift */; };
 		659DD02A563241E2EEDFA149 /* BannerTypeface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57DE90B827A053E7BD011D /* BannerTypeface.swift */; };
 		82B6F779D8F744BEE6CE347E /* BannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB739BE48F9625F57109AC4 /* BannerApp.swift */; };
 		A17219FBE75E2533AEEAEA26 /* ExternalDisplaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A0EF09D228B1464F32B4 /* ExternalDisplaySceneDelegate.swift */; };
@@ -52,6 +53,7 @@
 		C8A37860031F905218F9A1C0 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		D4DEA4B02C571CDC50CC2050 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		DEC38536DEA1E8C4DD86A85E /* BannerPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerPreset.swift; sourceTree = "<group>"; };
+		DFD59D7C0D89F38730A72FF9 /* BannerVideoExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerVideoExporter.swift; sourceTree = "<group>"; };
 		E5A3C45D7D7A10458FEA5767 /* BannerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerScreen.swift; sourceTree = "<group>"; };
 		E833E2A1B097B29385BA0762 /* RichTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichTextEditor.swift; sourceTree = "<group>"; };
 		E98F2F0BBAB7769B43CA6BCD /* BannerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerText.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				63EA4B7761A885DC51416987 /* BannerSettings.swift */,
 				E98F2F0BBAB7769B43CA6BCD /* BannerText.swift */,
 				0F57DE90B827A053E7BD011D /* BannerTypeface.swift */,
+				DFD59D7C0D89F38730A72FF9 /* BannerVideoExporter.swift */,
 				98D8F9ADBC6C0AE908D728C2 /* ContentView.swift */,
 				84C2A0EF09D228B1464F32B4 /* ExternalDisplaySceneDelegate.swift */,
 				35660DC2BB84B58D3D282CA0 /* Info.plist */,
@@ -188,6 +191,7 @@
 				03309D0568A53077B48BAB78 /* BannerSettings.swift in Sources */,
 				FB404BF28899CC1E92EE67C0 /* BannerText.swift in Sources */,
 				659DD02A563241E2EEDFA149 /* BannerTypeface.swift in Sources */,
+				651A4F7AC4C22CF4642841C2 /* BannerVideoExporter.swift in Sources */,
 				F1C20BEBBA5288ED96E0C5B2 /* ContentView.swift in Sources */,
 				A17219FBE75E2533AEEAEA26 /* ExternalDisplaySceneDelegate.swift in Sources */,
 				BBD759C1875B938D47D06D3A /* MarqueeBanner.swift in Sources */,

@@ -1,419 +1,1307 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "banner.defaultText" : {
-      "comment" : "Texto de ejemplo que aparece la primera vez",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Hola! 👋" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hello! 👋" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Hola! 👋" } }
+  "sourceLanguage": "en",
+  "strings": {
+    "Could not prepare the video.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No s'ha pogut preparar el vídeo."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not prepare the video."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se ha podido preparar el vídeo."
+          }
+        }
       }
     },
-    "banner.hint" : {
-      "comment" : "Aviso inicial sobre cómo volver a los ajustes",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Toca la pantalla per tornar als ajustos · Volum: flaixos" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap the screen to go back to the settings · Volume: flashes" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Toca la pantalla para volver a los ajustes · Volumen: destellos" } }
+    "The message is empty.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El missatge és buit."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message is empty."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El mensaje está vacío."
+          }
+        }
       }
     },
-    "banner.settings" : {
-      "comment" : "Botón para volver a la pantalla de ajustes",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ajustos" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ajustes" } }
+    "The video could not be written.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No s'ha pogut escriure el vídeo."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The video could not be written."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se ha podido escribir el vídeo."
+          }
+        }
       }
     },
-    "common.done" : {
-      "comment" : "Botón para cerrar el teclado",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Fet" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Hecho" } }
+    "banner.defaultText": {
+      "comment": "Texto de ejemplo que aparece la primera vez",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola! 👋"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hello! 👋"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Hola! 👋"
+          }
+        }
       }
     },
-    "common.close" : {
-      "comment" : "Botón para cerrar la biblioteca de mensajes",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Tanca" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Close" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cerrar" } }
+    "banner.hint": {
+      "comment": "Aviso inicial sobre cómo volver a los ajustes",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toca la pantalla per tornar als ajustos · Volum: flaixos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap the screen to go back to the settings · Volume: flashes"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toca la pantalla para volver a los ajustes · Volumen: destellos"
+          }
+        }
       }
     },
-    "projection.active" : {
-      "comment" : "Aviso de que el rótulo se ve en una pantalla externa",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "S'està projectant en una pantalla externa" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Showing on an external display" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Proyectando en una pantalla externa" } }
+    "banner.settings": {
+      "comment": "Botón para volver a la pantalla de ajustes",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajustos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajustes"
+          }
+        }
       }
     },
-    "path.cancel" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Cancel·la" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cancelar" } }
+    "common.close": {
+      "comment": "Botón para cerrar la biblioteca de mensajes",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanca"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerrar"
+          }
+        }
       }
     },
-    "path.draw" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Dibuixa la trajectòria" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw path" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Dibujar trayectoria" } }
+    "common.done": {
+      "comment": "Botón para cerrar el teclado",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hecho"
+          }
+        }
       }
     },
-    "path.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Les lletres pugen i baixen seguint el traç mentre travessen la pantalla. El dibuix es repeteix fins que el missatge acaba de passar." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "The letters rise and fall along the stroke as they cross the screen. The drawing repeats until the whole message has gone by." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Las letras suben y bajan siguiendo el trazo mientras cruzan la pantalla. El dibujo se repite hasta que el mensaje termina de pasar." } }
+    "export.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No s'ha pogut exportar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not export"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se ha podido exportar"
+          }
+        }
       }
     },
-    "path.instructions" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Dibuixa amb el dit el recorregut, d'esquerra a dreta." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Draw the path with your finger, from left to right." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Dibuja con el dedo el recorrido, de izquierda a derecha." } }
+    "export.progress": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Generant el vídeo…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rendering the video…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Generando el vídeo…"
+          }
+        }
       }
     },
-    "path.preset.sawtooth" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Serra" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sawtooth" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sierra" } }
+    "export.video": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exporta vídeo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export video"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportar vídeo"
+          }
+        }
       }
     },
-    "path.preset.straight" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Recta" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Straight" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recta" } }
+    "path.cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel·la"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        }
       }
     },
-    "path.preset.wave" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ona" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wave" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Onda" } }
+    "path.draw": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibuixa la trajectòria"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Draw path"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibujar trayectoria"
+          }
+        }
       }
     },
-    "path.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Trajectòria" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Path" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Trayectoria" } }
+    "path.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les lletres pugen i baixen seguint el traç mentre travessen la pantalla. El dibuix es repeteix fins que el missatge acaba de passar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The letters rise and fall along the stroke as they cross the screen. The drawing repeats until the whole message has gone by."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las letras suben y bajan siguiendo el trazo mientras cruzan la pantalla. El dibujo se repite hasta que el mensaje termina de pasar."
+          }
+        }
       }
     },
-    "path.use" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Fes-la servir" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Use" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Usar" } }
+    "path.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibuixa amb el dit el recorregut, d'esquerra a dreta."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Draw the path with your finger, from left to right."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibuja con el dedo el recorrido, de izquierda a derecha."
+          }
+        }
       }
     },
-    "presets.delete" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Elimina" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Eliminar" } }
+    "path.preset.sawtooth": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sawtooth"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sierra"
+          }
+        }
       }
     },
-    "presets.empty.description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Toca la icona de guardar per conservar el missatge actual amb el seu color, tipografia, mida i velocitat." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap the save icon to keep the current message with its color, typeface, size and speed." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Toca el icono de guardar para conservar el mensaje actual con su color, tipografía, tamaño y velocidad." } }
+    "path.preset.straight": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Straight"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recta"
+          }
+        }
       }
     },
-    "presets.empty.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Cap missatge desat" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "No saved messages" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ningún mensaje guardado" } }
+    "path.preset.wave": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ona"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wave"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onda"
+          }
+        }
       }
     },
-    "presets.save" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Desa el missatge" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save message" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guardar mensaje" } }
+    "path.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trajectòria"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Path"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trayectoria"
+          }
+        }
       }
     },
-    "presets.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Missatges desats" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Saved messages" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mensajes guardados" } }
+    "path.use": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fes-la servir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usar"
+          }
+        }
       }
     },
-    "settings.background.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Amb la brillantor a zero el fons és negre." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "With brightness at zero the background is black." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Con el brillo a cero el fondo es negro." } }
+    "presets.delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elimina"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar"
+          }
+        }
       }
     },
-    "settings.background.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Fons" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Background" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fondo" } }
+    "presets.empty.description": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toca la icona de guardar per conservar el missatge actual amb el seu color, tipografia, mida i velocitat."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap the save icon to keep the current message with its color, typeface, size and speed."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toca el icono de guardar para conservar el mensaje actual con su color, tipografía, tamaño y velocidad."
+          }
+        }
       }
     },
-    "settings.color.brightness" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Brillantor" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Brightness" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Brillo" } }
+    "presets.empty.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cap missatge desat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No saved messages"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ningún mensaje guardado"
+          }
+        }
       }
     },
-    "settings.color.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Color del text" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Text color" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Color del texto" } }
+    "presets.save": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desa el missatge"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save message"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar mensaje"
+          }
+        }
       }
     },
-    "settings.color.hue" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "To" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hue" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tono" } }
+    "presets.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missatges desats"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved messages"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mensajes guardados"
+          }
+        }
       }
     },
-    "settings.color.saturation" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Saturació" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Saturation" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Saturación" } }
+    "projection.active": {
+      "comment": "Aviso de que el rótulo se ve en una pantalla externa",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S'està projectant en una pantalla externa"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Showing on an external display"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proyectando en una pantalla externa"
+          }
+        }
       }
     },
-    "settings.flash.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Prem un botó de volum amb el rètol a la pantalla per encendre o apagar els flaixos." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Press a volume button while the banner is on screen to switch the flashes on or off." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pulsa un botón de volumen con el rótulo en pantalla para encender o apagar los destellos." } }
+    "settings.background.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amb la brillantor a zero el fons és negre."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With brightness at zero the background is black."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Con el brillo a cero el fondo es negro."
+          }
+        }
       }
     },
-    "settings.flash.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Flaixos" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Flashes" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Destellos" } }
+    "settings.background.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fons"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fondo"
+          }
+        }
       }
     },
-    "settings.flash.rate" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Freqüència" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rate" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Frecuencia" } }
+    "settings.color.brightness": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brillantor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brightness"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brillo"
+          }
+        }
       }
     },
-    "settings.flash.toggle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Flaixos" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Flashes" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Destellos" } }
+    "settings.color.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color del text"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text color"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color del texto"
+          }
+        }
       }
     },
-    "settings.language.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Idioma" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Language" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Idioma" } }
+    "settings.color.hue": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hue"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tono"
+          }
+        }
       }
     },
-    "settings.language.system" : {
-      "comment" : "Opción de seguir el idioma del sistema",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Automàtic (sistema)" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Automatic (system)" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Automático (sistema)" } }
+    "settings.color.saturation": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saturació"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saturation"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saturación"
+          }
+        }
       }
     },
-    "settings.show" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Mostra el rètol" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Show banner" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mostrar rótulo" } }
+    "settings.flash.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prem un botó de volum amb el rètol a la pantalla per encendre o apagar els flaixos."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Press a volume button while the banner is on screen to switch the flashes on or off."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulsa un botón de volumen con el rótulo en pantalla para encender o apagar los destellos."
+          }
+        }
       }
     },
-    "settings.size.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "El text recorre tota l'amplada de la pantalla; aquí n'ajustes l'alçada." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "The text sweeps across the full width of the screen; this sets how tall it is." } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "El texto recorre toda la anchura de la pantalla; aquí ajustas su altura." } }
+    "settings.flash.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flaixos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flashes"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destellos"
+          }
+        }
       }
     },
-    "settings.size.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Mida" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Size" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tamaño" } }
+    "settings.flash.rate": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freqüència"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frecuencia"
+          }
+        }
       }
     },
-    "settings.speed.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Velocitat" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speed" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Velocidad" } }
+    "settings.flash.toggle": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flaixos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flashes"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destellos"
+          }
+        }
       }
     },
-    "settings.text.bold" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Negreta" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bold" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Negrita" } }
+    "settings.language.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
+          }
+        }
       }
     },
-    "settings.text.italic" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Cursiva" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Italic" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cursiva" } }
+    "settings.language.system": {
+      "comment": "Opción de seguir el idioma del sistema",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automàtic (sistema)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic (system)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automático (sistema)"
+          }
+        }
       }
     },
-    "settings.text.underline" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Subratllat" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Underline" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Subrayado" } }
+    "settings.show": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra el rètol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show banner"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar rótulo"
+          }
+        }
       }
     },
-    "settings.text.clearColor" : {
-      "comment" : "Botón que devuelve la selección al color base",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Treu el color" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Remove color" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Quitar color" } }
+    "settings.size.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El text recorre tota l'amplada de la pantalla; aquí n'ajustes l'alçada."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The text sweeps across the full width of the screen; this sets how tall it is."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El texto recorre toda la anchura de la pantalla; aquí ajustas su altura."
+          }
+        }
       }
     },
-    "settings.text.color" : {
-      "comment" : "Selector de color para el texto seleccionado",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Color de la selecció" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Selection color" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Color de la selección" } }
+    "settings.size.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mida"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamaño"
+          }
+        }
       }
     },
-    "settings.text.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Pots incloure emoticones 🎉" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Emoji are welcome 🎉" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Puedes incluir emoticonos 🎉" } }
+    "settings.speed.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Velocitat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Velocidad"
+          }
+        }
       }
     },
-    "settings.text.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Missatge" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Message" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mensaje" } }
+    "settings.text.bold": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Negreta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bold"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Negrita"
+          }
+        }
       }
     },
-    "settings.text.placeholder" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Escriu el teu missatge" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Write your message" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Escribe tu mensaje" } }
+    "settings.text.clearColor": {
+      "comment": "Botón que devuelve la selección al color base",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Treu el color"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove color"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quitar color"
+          }
+        }
       }
     },
-    "settings.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Banner" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Banner" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Banner" } }
+    "settings.text.color": {
+      "comment": "Selector de color para el texto seleccionado",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color de la selecció"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selection color"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color de la selección"
+          }
+        }
       }
     },
-    "settings.typeface.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Tipografia" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Typeface" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tipografía" } }
+    "settings.text.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pots incloure emoticones 🎉"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emoji are welcome 🎉"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puedes incluir emoticonos 🎉"
+          }
+        }
       }
     },
-    "typeface.monospaced" : {
-      "comment" : "Nombre del tipo monoespaciado",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Monoespaiada" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Monospaced" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Monoespaciada" } }
+    "settings.text.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missatge"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mensaje"
+          }
+        }
       }
     },
-    "typeface.rounded" : {
-      "comment" : "Nombre del tipo San Francisco Rounded",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Arrodonida" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rounded" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Redondeada" } }
+    "settings.text.italic": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cursiva"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Italic"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cursiva"
+          }
+        }
       }
     },
-    "typeface.serif" : {
-      "comment" : "Nombre del tipo con remates (New York)",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Amb serifa" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Serif" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Con remates" } }
+    "settings.text.placeholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escriu el teu missatge"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Write your message"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escribe tu mensaje"
+          }
+        }
       }
     },
-    "typeface.standard" : {
-      "comment" : "Nombre del tipo del sistema",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Sistema" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "System" } },
-        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sistema" } }
+    "settings.text.underline": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subratllat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Underline"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subrayado"
+          }
+        }
+      }
+    },
+    "settings.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banner"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banner"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banner"
+          }
+        }
+      }
+    },
+    "settings.typeface.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipografia"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Typeface"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipografía"
+          }
+        }
+      }
+    },
+    "typeface.monospaced": {
+      "comment": "Nombre del tipo monoespaciado",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monoespaiada"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monospaced"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monoespaciada"
+          }
+        }
+      }
+    },
+    "typeface.rounded": {
+      "comment": "Nombre del tipo San Francisco Rounded",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrodonida"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rounded"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Redondeada"
+          }
+        }
+      }
+    },
+    "typeface.serif": {
+      "comment": "Nombre del tipo con remates (New York)",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amb serifa"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serif"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Con remates"
+          }
+        }
+      }
+    },
+    "typeface.standard": {
+      "comment": "Nombre del tipo del sistema",
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistema"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistema"
+          }
+        }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

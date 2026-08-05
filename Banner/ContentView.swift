@@ -22,6 +22,12 @@ struct ContentView: View {
     /// Contador que dispara la respuesta háptica al guardar.
     @State private var saveCount = 0
 
+    // MARK: Exportación a vídeo
+    @State private var isExporting = false
+    @State private var exportProgress: Double = 0
+    @State private var exportedVideo: ExportedVideo?
+    @State private var exportError: String?
+
     /// Mando del editor de texto con atributos.
     @State private var richText = RichTextController()
 
@@ -43,6 +49,12 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 32)
+                // Ancho máximo y centrado. A pantalla completa en un iPad de 13"
+                // los deslizadores medirían casi mil puntos: con un recorrido así
+                // un centímetro de dedo se salta medio arcoíris y ajustar un color
+                // se vuelve imposible. En iPhone el límite no llega a aplicarse.
+                .frame(maxWidth: 700)
+                .frame(maxWidth: .infinity)
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("settings.title")
@@ -64,6 +76,43 @@ struct ContentView: View {
                         Label("presets.title", systemImage: "rectangle.stack")
                     }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        richText.endEditing()
+                        exportVideo()
+                    } label: {
+                        Label("export.video", systemImage: "film")
+                    }
+                    .disabled(isExporting)
+                }
+            }
+            .overlay {
+                if isExporting {
+                    ZStack {
+                        Color.black.opacity(0.55).ignoresSafeArea()
+                        VStack(spacing: 16) {
+                            ProgressView(value: exportProgress)
+                                .progressViewStyle(.linear)
+                                .frame(width: 220)
+                            Text("export.progress")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(28)
+                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18))
+                    }
+                }
+            }
+            .sheet(item: $exportedVideo) { video in
+                ShareSheet(items: [video.url])
+            }
+            .alert("export.failed", isPresented: Binding(
+                get: { exportError != nil },
+                set: { if !$0 { exportError = nil } }
+            )) {
+                Button("OK") { exportError = nil }
+            } message: {
+                Text(exportError ?? "")
             }
             .sensoryFeedback(.success, trigger: saveCount)
             .scrollDismissesKeyboard(.interactively)
@@ -324,6 +373,29 @@ struct ContentView: View {
         .buttonStyle(.borderedProminent)
         .tint(settings.color)
     }
+
+    // MARK: - Exportación
+
+    /// Lanza la exportación del rótulo a vídeo.
+    ///
+    /// El tamaño es 1920×1080 fijo: el rótulo es apaisado y esa resolución es la
+    /// que mejor se comporta al compartirlo por mensajería o redes sociales.
+    private func exportVideo() {
+        isExporting = true
+        exportProgress = 0
+        Task {
+            do {
+                let url = try await BannerVideoExporter.export(settings: settings) { avance in
+                    exportProgress = avance
+                }
+                isExporting = false
+                exportedVideo = ExportedVideo(url: url)
+            } catch {
+                isExporting = false
+                exportError = error.localizedDescription
+            }
+        }
+    }
 }
 
 // MARK: - Tarjeta de ajustes
@@ -438,4 +510,23 @@ private struct GradientSlider: View {
 
 #Preview {
     ContentView(settings: BannerSettings(), store: PresetStore(), projection: ProjectionState())
+
+}
+
+/// Vídeo listo para compartir. Envuelto en un tipo identificable porque
+/// `sheet(item:)` lo exige y `URL` no lo es.
+private struct ExportedVideo: Identifiable {
+    let url: URL
+    var id: String { url.absoluteString }
+}
+
+/// Hoja de compartir del sistema.
+private struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
 }

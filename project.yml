@@ -37,6 +37,9 @@ targets:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_VERSION: "5.9"
+        # iPhone y iPad. El iPad es el dispositivo donde esta app se aprovecha
+        # mejor —un rètol se lee de lejos—, y toda la competencia lo soporta.
+        # A cambio, la ficha de la App Store exige un juego propio de capturas.
         TARGETED_DEVICE_FAMILY: "1,2"
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: 1.0
