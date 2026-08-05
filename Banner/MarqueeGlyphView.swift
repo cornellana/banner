@@ -15,14 +15,20 @@ struct MarqueeGlyphView: UIViewRepresentable {
     let path: BannerPath
     let speed: Double
 
+    /// Dibuja cada letra como matriz de puntos en vez de como texto.
+    var led: Bool = false
+
+    /// Separación entre puntos cuando ``led`` está activo.
+    var ledPitch: CGFloat = 6
+
     func makeUIView(context: Context) -> MarqueeContentView {
         let view = MarqueeContentView()
-        view.configure(text: text, path: path, speed: speed)
+        view.configure(text: text, path: path, speed: speed, led: led, ledPitch: ledPitch)
         return view
     }
 
     func updateUIView(_ uiView: MarqueeContentView, context: Context) {
-        uiView.configure(text: text, path: path, speed: speed)
+        uiView.configure(text: text, path: path, speed: speed, led: led, ledPitch: ledPitch)
     }
 }
 
@@ -34,6 +40,8 @@ final class MarqueeContentView: UIView {
     private var text = NSAttributedString()
     private var path = BannerPath.straight
     private var speed: Double = 300
+    private var led = false
+    private var ledPitch: CGFloat = 6
 
     /// Identifica la disposición actual: mientras no cambie, un cambio de
     /// color solo repinta las capas en vez de rehacer la animación.
@@ -64,10 +72,13 @@ final class MarqueeContentView: UIView {
     ///   - text: Mensaje con sus atributos ya resueltos.
     ///   - path: Trayectoria vertical.
     ///   - speed: Velocidad en puntos por segundo.
-    func configure(text: NSAttributedString, path: BannerPath, speed: Double) {
+    func configure(text: NSAttributedString, path: BannerPath, speed: Double,
+                   led: Bool = false, ledPitch: CGFloat = 6) {
         self.text = text
         self.path = path
         self.speed = speed
+        self.led = led
+        self.ledPitch = ledPitch
         setNeedsLayout()
     }
 
@@ -87,7 +98,7 @@ final class MarqueeContentView: UIView {
         let size = bounds.size
         guard size.width > 0, size.height > 0, text.length > 0 else { return }
 
-        let key = "\(text.string)|\(Int(text.size().width))|\(Int(size.width))x\(Int(size.height))|\(speed)|\(path.points.count)|\(path.points.first?.y ?? 0)"
+        let key = "\(text.string)|\(Int(text.size().width))|\(Int(size.width))x\(Int(size.height))|\(speed)|\(path.points.count)|\(path.points.first?.y ?? 0)|\(led)|\(Int(ledPitch))"
         guard key != layoutKey else {
             // Misma disposición: basta con repintar por si cambió el color.
             refreshColors()
@@ -100,7 +111,16 @@ final class MarqueeContentView: UIView {
     /// Repinta las capas conservando la animación en curso.
     private func refreshColors() {
         for entry in glyphLayers {
-            entry.layer.string = text.attributedSubstring(from: entry.range)
+            let piece = text.attributedSubstring(from: entry.range)
+            if led {
+                // El color va dentro de los puntos: hay que volver a dibujarlos.
+                entry.layer.contents = LEDRenderer.image(
+                    for: piece,
+                    pitch: ledPitch,
+                    scale: traitCollection.displayScale)?.cgImage
+            } else {
+                entry.layer.string = piece
+            }
         }
     }
 
@@ -151,7 +171,16 @@ final class MarqueeContentView: UIView {
 
     private func makeLayer(for piece: NSAttributedString, width: CGFloat, height: CGFloat) -> CATextLayer {
         let layer = CATextLayer()
-        layer.string = piece
+        if led, let puntos = LEDRenderer.image(for: piece,
+                                               pitch: ledPitch,
+                                               scale: traitCollection.displayScale)?.cgImage {
+            // La capa sigue siendo la misma y la animación no cambia: solo se
+            // sustituye el texto por su dibujo en puntos.
+            layer.contents = puntos
+            layer.contentsGravity = .resizeAspect
+        } else {
+            layer.string = piece
+        }
         layer.isWrapped = false
         layer.alignmentMode = .left
         layer.contentsScale = traitCollection.displayScale

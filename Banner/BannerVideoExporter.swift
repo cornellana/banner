@@ -38,6 +38,10 @@ enum BannerVideoExporter {
         let offset: CGFloat
         /// Anchura tipográfica, para descartarla cuando sale de pantalla.
         let width: CGFloat
+        /// Dibujo en matriz de puntos, cuando el rótulo va en modo LED.
+        let dots: CGImage?
+        /// Altura del dibujo en puntos, necesaria para colocarlo.
+        let dotsHeight: CGFloat
     }
 
     /// Genera el vídeo y devuelve la URL del archivo temporal.
@@ -59,7 +63,8 @@ enum BannerVideoExporter {
         let texto = BannerText.styled(displayText(from: settings),
                                       typeface: settings.typeface,
                                       fontSize: fontSize,
-                                      baseColor: UIColor(settings.color))
+                                      baseColor: UIColor(settings.color),
+                                      lightweight: settings.ledEnabled)
 
         let linea = CTLineCreateWithAttributedString(texto)
         var ascent: CGFloat = 0, descent: CGFloat = 0
@@ -67,7 +72,9 @@ enum BannerVideoExporter {
         let altoLinea = ascent + descent
         guard anchoTexto > 0 else { throw Failure.emptyMessage }
 
-        let glyphs = trocear(texto, linea: linea)
+        let glyphs = trocear(texto, linea: linea,
+                             led: settings.ledEnabled,
+                             pitch: LEDRenderer.pitch(forFontSize: fontSize))
         let recorrido = anchoTexto + size.width
         let velocidad = max(settings.speed, 1)
         // Una pasada completa, más lo que tarda la última letra en salir.
@@ -142,9 +149,20 @@ enum BannerVideoExporter {
                     // de línea completa: la base del texto queda a `ascent` del
                     // borde superior. Aquí se replica, invirtiendo la Y porque
                     // Core Graphics tiene el origen abajo.
-                    let baseArriba = centro - altoLinea / 2 + ascent
-                    ctx.textPosition = CGPoint(x: x, y: size.height - baseArriba)
-                    CTLineDraw(g.line, ctx)
+                    if let puntos = g.dots {
+                        // La imagen se ancla igual que la capa: a la izquierda y
+                        // centrada en vertical sobre la trayectoria.
+                        let alto = g.dotsHeight
+                        let ancho = CGFloat(puntos.width) / CGFloat(puntos.height) * alto
+                        ctx.draw(puntos, in: CGRect(x: x,
+                                                    y: size.height - centro - alto / 2,
+                                                    width: ancho,
+                                                    height: alto))
+                    } else {
+                        let baseArriba = centro - altoLinea / 2 + ascent
+                        ctx.textPosition = CGPoint(x: x, y: size.height - baseArriba)
+                        CTLineDraw(g.line, ctx)
+                    }
                 }
             }
             CVPixelBufferUnlockBaseAddress(pixels, [])
@@ -176,7 +194,8 @@ enum BannerVideoExporter {
     /// Se recorre por secuencias de caracteres compuestas para no partir
     /// emoticonos ni acentos combinantes. Los espacios se descartan: no se
     /// dibujan, solo separan.
-    private static func trocear(_ texto: NSAttributedString, linea: CTLine) -> [Glyph] {
+    private static func trocear(_ texto: NSAttributedString, linea: CTLine,
+                                led: Bool, pitch: CGFloat) -> [Glyph] {
         var glyphs: [Glyph] = []
         let cadena = texto.string as NSString
         var indice = 0
@@ -187,10 +206,15 @@ enum BannerVideoExporter {
             let trozo = texto.attributedSubstring(from: rango)
             guard !trozo.string.trimmingCharacters(in: .whitespaces).isEmpty else { continue }
 
+            // Los puntos se dibujan a escala 2: el vídeo sale a 1920 de ancho
+            // y con escala 1 los bordes de cada punto quedan dentados.
+            let puntos = led ? LEDRenderer.image(for: trozo, pitch: pitch, scale: 2) : nil
             glyphs.append(Glyph(
                 line: CTLineCreateWithAttributedString(trozo),
                 offset: CGFloat(CTLineGetOffsetForStringIndex(linea, rango.location, nil)),
-                width: trozo.size().width))
+                width: trozo.size().width,
+                dots: puntos?.cgImage,
+                dotsHeight: puntos?.size.height ?? 0))
         }
         return glyphs
     }

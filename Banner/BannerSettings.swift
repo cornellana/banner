@@ -53,6 +53,13 @@ final class BannerSettings {
         }
     }
 
+    /// Dibuja el texto como una matriz de puntos, al modo de los paneles de LEDs.
+    ///
+    /// No cambia la tipografía: se sigue usando la elegida, y lo que se
+    /// convierte en puntos es su dibujo. Así el formato por tramos y los
+    /// emoticonos siguen funcionando igual.
+    var ledEnabled: Bool { didSet { save(ledEnabled, for: .ledEnabled) } }
+
     /// Velocidad de desplazamiento en puntos por segundo.
     var speed: Double { didSet { save(speed, for: .speed) } }
 
@@ -128,6 +135,7 @@ final class BannerSettings {
         hue = defaults.value(forKey: Key.hue.rawValue) as? Double ?? 0.12
         saturation = defaults.value(forKey: Key.saturation.rawValue) as? Double ?? 1.0
         brightness = defaults.value(forKey: Key.brightness.rawValue) as? Double ?? 1.0
+        ledEnabled = defaults.bool(forKey: Key.ledEnabled.rawValue)
         path = defaults.data(forKey: Key.path.rawValue)
             .flatMap { try? JSONDecoder().decode(BannerPath.self, from: $0) } ?? .straight
         backgroundHue = defaults.value(forKey: Key.backgroundHue.rawValue) as? Double ?? 0
@@ -145,6 +153,7 @@ final class BannerSettings {
         case text, richText, typeface, language, hue, saturation, brightness
         case backgroundHue, backgroundSaturation, backgroundBrightness
         case speed, heightFraction, flashRate, path
+        case ledEnabled
     }
 
     private func save(_ value: Any, for key: Key) {

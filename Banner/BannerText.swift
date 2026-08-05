@@ -45,7 +45,8 @@ enum BannerText {
         _ source: NSAttributedString,
         typeface: BannerTypeface,
         fontSize: CGFloat,
-        baseColor: UIColor
+        baseColor: UIColor,
+        lightweight: Bool = false
     ) -> NSAttributedString {
         let result = NSMutableAttributedString(attributedString: source)
         let whole = NSRange(location: 0, length: result.length)
@@ -59,7 +60,7 @@ enum BannerText {
             let traits = editedFont?.fontDescriptor.symbolicTraits ?? []
             result.addAttribute(
                 .font,
-                value: font(for: typeface, size: fontSize, traits: traits),
+                value: font(for: typeface, size: fontSize, traits: traits, lightweight: lightweight),
                 range: range
             )
 
@@ -102,9 +103,12 @@ enum BannerText {
     private static func font(
         for typeface: BannerTypeface,
         size: CGFloat,
-        traits: UIFontDescriptor.SymbolicTraits
+        traits: UIFontDescriptor.SymbolicTraits,
+        lightweight: Bool = false
     ) -> UIFont {
-        let base = typeface.uiFont(size: size, bold: traits.contains(.traitBold))
+        let base = typeface.uiFont(size: size,
+                                   bold: traits.contains(.traitBold),
+                                   lightweight: lightweight)
         guard traits.contains(.traitItalic) else { return base }
 
         if let descriptor = base.fontDescriptor.withSymbolicTraits(

@@ -183,20 +183,19 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 // Muestra el aspecto real del rótulo: tipografía, colores y los
-                // atributos que lleve cada tramo del mensaje.
-                AttributedLabel(
-                    attributedText: BannerText.styled(
-                        settings.plainText.isEmpty ? BannerText.plain(" ") : settings.attributedText,
-                        typeface: settings.typeface,
-                        fontSize: 34,
-                        baseColor: UIColor(settings.color)
-                    ),
-                    scalesToFit: true
-                )
+                // atributos que lleve cada tramo del mensaje. Con los LEDs
+                // encendidos se dibuja igual que el rótulo, en puntos: si no,
+                // el interruptor no tendría efecto visible hasta lanzarlo.
+                previewLabel
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(settings.backgroundColor, in: RoundedRectangle(cornerRadius: 12))
                 .clipped()
+
+                Toggle(isOn: $settings.ledEnabled) {
+                    Label("settings.led", systemImage: "circle.grid.3x3.fill")
+                }
+                .tint(settings.color)
             }
         }
     }
@@ -372,6 +371,37 @@ struct ContentView: View {
         }
         .buttonStyle(.borderedProminent)
         .tint(settings.color)
+    }
+
+    /// Cuerpo usado en la vista previa de los ajustes.
+    private static let previewFontSize: CGFloat = 34
+
+    /// Mensaje con el aspecto que tendrá en el rótulo.
+    private var previewText: NSAttributedString {
+        BannerText.styled(
+            settings.plainText.isEmpty ? BannerText.plain(" ") : settings.attributedText,
+            typeface: settings.typeface,
+            fontSize: Self.previewFontSize,
+            baseColor: UIColor(settings.color),
+            lightweight: settings.ledEnabled
+        )
+    }
+
+    /// Vista previa del mensaje, en texto o en puntos de LED.
+    @ViewBuilder
+    private var previewLabel: some View {
+        if settings.ledEnabled,
+           let puntos = LEDRenderer.image(
+               for: previewText,
+               pitch: LEDRenderer.pitch(forFontSize: Self.previewFontSize),
+               scale: 3) {
+            Image(uiImage: puntos)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 44)
+        } else {
+            AttributedLabel(attributedText: previewText, scalesToFit: true)
+        }
     }
 
     // MARK: - Exportación

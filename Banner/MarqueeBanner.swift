@@ -29,13 +29,20 @@ struct MarqueeBanner: View {
                 displayText,
                 typeface: settings.typeface,
                 fontSize: fontSize,
-                baseColor: baseColor
+                baseColor: baseColor,
+                lightweight: settings.ledEnabled
             )
 
             ZStack {
                 (isLit ? settings.color : settings.backgroundColor)
 
-                MarqueeGlyphView(text: styled, path: settings.path, speed: speed)
+                MarqueeGlyphView(
+                    text: styled,
+                    path: settings.path,
+                    speed: speed,
+                    led: settings.ledEnabled,
+                    ledPitch: LEDRenderer.pitch(forFontSize: fontSize)
+                )
             }
         }
         .task { await flashLoop() }

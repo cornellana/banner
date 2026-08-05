@@ -75,8 +75,13 @@ enum BannerTypeface: String, CaseIterable, Identifiable, Codable, Sendable {
     ///   - bold: Si el tramo lleva negrita. El rótulo ya se dibuja en un peso
     ///     grueso, así que la negrita sube al más grueso disponible; si no, no
     ///     se notaría ninguna diferencia.
-    func uiFont(size: CGFloat, bold: Bool = false) -> UIFont {
-        let system = UIFont.systemFont(ofSize: size, weight: bold ? .black : .heavy)
+    ///   - lightweight: Usa un trazo medio en vez del grueso habitual. Lo pide
+    ///     el modo LED: al reticular un peso Heavy los contrapunzones de la «e»
+    ///     y la «o» se cierran y el texto deja de leerse.
+    func uiFont(size: CGFloat, bold: Bool = false, lightweight: Bool = false) -> UIFont {
+        let grueso: UIFont.Weight = lightweight ? (bold ? .semibold : .medium)
+                                                : (bold ? .black : .heavy)
+        let system = UIFont.systemFont(ofSize: size, weight: grueso)
         guard let systemDesign else {
             let named = UIFont(name: rawValue, size: size) ?? system
             // En las familias con nombre la negrita se pide como rasgo: no

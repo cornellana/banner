@@ -882,6 +882,29 @@
         }
       }
     },
+    "settings.led": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Punts de LED"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LED dots"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puntos de LED"
+          }
+        }
+      }
+    },
     "settings.show": {
       "extractionState": "manual",
       "localizations": {

@@ -44,3 +44,8 @@ targets:
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: 1.0
         DEVELOPMENT_TEAM: TJ6V4QM3GB
+    # Esquema compartido y versionado. Sin esto, el único esquema es el que
+    # crea Xcode en xcuserdata, y `xcodegen generate` lo borra: cualquier
+    # compilación por línea de órdenes falla hasta volver a abrir el proyecto.
+    scheme:
+      configVariants: []
